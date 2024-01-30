@@ -6,12 +6,113 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:25:48 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/01/29 21:35:20 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:32:46 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "libft/libft.h"
+// #include "push_swap.h"
+// #include "libft/libft.h"
+
+#include <stdlib.h>
+#include <limits.h>
+#include <stdio.h>
+
+typedef struct s_split
+{
+	int		i;
+	char	**split;
+	int		wordcount;
+}	t_split;
+
+int	ft_isspace(char	*str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		if (str[i] = ' ')
+			return (1);
+			
+	return (0);
+}
+
+char	**freeer(char **split, int i)
+{
+	while (i-- > 0)
+		free (split[i]);
+	free (split);
+	return (NULL);
+}
+
+static int	words(const char *s, char c)
+{
+	int		wordcount;
+
+	wordcount = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		while (*s != c && *s)
+		{
+			s++;
+			if (*s == c || *s == '\0')
+				wordcount++;
+		}
+	}
+	return (wordcount);
+}
+
+static char	*wordsize(const char *s, char c)
+{
+	int		i;
+	char	*word;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	while (s[i] != '\0' && s[i] != c)
+		i++;
+	word = malloc(sizeof(char) * (i + 1));
+	if (!word)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0' && s[i] != c)
+	{
+		word[i] = s[i];
+		i++;
+	}
+	word[i] = '\0';
+	return (word);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	t_split	hey;
+
+	hey.i = 0;
+	if (!s)
+		return (NULL);
+	hey.wordcount = words(s, c);
+	hey.split = malloc(sizeof(char *) * (hey.wordcount + 1));
+	if (!hey.split)
+		return (NULL);
+	while (*s)
+	{
+		while (*s && *s == c)
+			s++;
+		if (*s && *s != c)
+		{
+			if (!(hey.split[hey.i] = wordsize(s, c)))
+				return (freeer(hey.split, hey.i));
+			hey.i++;
+			while (*s && *s != c)
+				s++;
+		}
+	}
+	hey.split[hey.i] = (NULL);
+	return (hey.split);
+}
 
 int	_strlen(const char *str)
 {
@@ -38,14 +139,14 @@ size_t	_strlcpy(char *dst, const char *src, size_t dstsize)
 
 	i = -1;
 	if (dstsize == 0)
-		return (ft_strlen(src));
+		return (_strlen(src));
 	while (src[++i] && (i < dstsize - 1))
 		dst[i] = src[i];
 	dst[i] = '\0';
-	return (ft_strlen(src));
+	return (_strlen(src));
 }
 
-char	*_strdup(const char *s1)
+char	*_strdup(char *s1)
 {
 	char	*s2;
 
@@ -131,7 +232,7 @@ char	*strjoin(char *s1, char *s2)
 		str[j++] = s2[i++];
 	str[j] = '\0';
 	if (s1)
-		free(s1);
+		free (s1);
 	return (str);
 }
 
@@ -154,11 +255,21 @@ int	checker(int **intarr, int number, int count)
 
 char	*joined(char *input, char **split, int count)
 {
-	int	i;
+	int		i;
 
 	i = 1;
 	if (split[i][0] == 0 || split[i] == NULL)
 		exit (printf("bad\n"));
+	while (i < count)
+	{
+		if (ft_isspace(split[i]) == 1)
+		{
+			freeer (split, i);
+			exit(printf("bad\n"));
+		}
+		i++;
+	}
+	i = 1;
 	input = _strdup(split[i++]);
 	while (i <= count)
 	{
@@ -207,8 +318,10 @@ int	parser(char **arr, int count)
 {
 	int	i;
 	int	*intarr;
+	int error;
 
 	i = 0;
+	error = 0;
 	intarr = malloc(sizeof(int) * count);
 	if (!intarr)
 		return (1);
@@ -217,13 +330,17 @@ int	parser(char **arr, int count)
 		if (hmm(arr[i], intarr) == 0)
 		{
 			if (hmm2(intarr, arr, i) == 1)
-				return (1);
+				error = 1;
 		}
 		else
-			return (1);
+			error = 1;
 		i++;
 	}
-	return (0);
+	freeer (arr, i);
+	// if (error == 1)
+	// if (intarr)
+	free (intarr);
+	return (error);
 }
 
 void	stackmaker(char **str, int count)
@@ -238,9 +355,12 @@ void	stackmaker(char **str, int count)
 	numbercount = wordcount(input, ' ');
 	tarr = ft_split(input, ' ');
 	i = 0;
-	if (!tarr || tarr[i] == 0 || tarr[i] == NULL)
-		exit (printf("bad\n"));
 	free(input);
+	if (!tarr || tarr[i] == 0 || tarr[i] == NULL)
+	{
+		freeer (tarr, i);
+		exit (printf("bad\n"));
+	}
 	if (parser(tarr, numbercount) == 0)
 		printf("good");
 	else
