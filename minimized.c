@@ -30,9 +30,11 @@ int	ft_isspace(char	*str)
 
 	i = 0;
 	while (str[i])
-		if (str[i] = ' ')
+	{
+		if (str[i] == ' ')
 			return (1);
-			
+		i++;
+	}	
 	return (0);
 }
 
@@ -260,11 +262,11 @@ char	*joined(char *input, char **split, int count)
 	i = 1;
 	if (split[i][0] == 0 || split[i] == NULL)
 		exit (printf("bad\n"));
-	while (i < count)
+	while (i <= count)
 	{
 		if (ft_isspace(split[i]) == 1)
 		{
-			freeer (split, i);
+			// freeer (split, i);
 			exit(printf("bad\n"));
 		}
 		i++;
@@ -339,7 +341,7 @@ int	parser(char **arr, int count)
 	freeer (arr, i);
 	// if (error == 1)
 	// if (intarr)
-	free (intarr);
+	// 	free (intarr);
 	return (error);
 }
 
