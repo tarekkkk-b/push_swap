@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tabadawi <tabadawi@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/31 16:25:16 by tabadawi          #+#    #+#             */
+/*   Updated: 2024/01/31 16:25:20 by tabadawi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	words(const char *s, char c)
@@ -59,8 +71,9 @@ char	**ft_split(char const *s, char c)
 			s++;
 		if (*s && *s != c)
 		{
-			if (!(hey.split[hey.i] = wordsize(s, c)))
-				return (freeer(hey.split, hey.i));
+			hey.split[hey.i] = wordsize(s, c);
+			if (!(hey.split[hey.i]))
+				return (freeer(hey.split));
 			hey.i++;
 			while (*s && *s != c)
 				s++;

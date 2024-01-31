@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tabadawi <tabadawi@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/31 16:24:54 by tabadawi          #+#    #+#             */
+/*   Updated: 2024/01/31 16:24:55 by tabadawi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	hmm(char *str, int	*arr)
@@ -28,36 +40,31 @@ int	hmm2(int *intarr, char **str, int i)
 		if (checker(&intarr, t_atoi(str[i]), i) == 0)
 			intarr[i] = t_atoi(str[i]);
 		else
-			return (1);
+			return (free (intarr), 1);
 	}
 	return (0);
 }
 
-int	parser(char **arr, int count)
+int	*parser(char **arr, int count)
 {
 	int	i;
 	int	*intarr;
-	int error;
 
 	i = 0;
-	error = 0;
 	intarr = malloc(sizeof(int) * count);
 	if (!intarr)
-		return (1);
+		return (freeer (arr), NULL);
 	while (i < count)
 	{
 		if (hmm(arr[i], intarr) == 0)
 		{
 			if (hmm2(intarr, arr, i) == 1)
-				error = 1;
+				return (freeer(arr), NULL);
 		}
 		else
-			error = 1;
+			return (freeer(arr), NULL);
 		i++;
 	}
-	freeer (arr, i);
-	// if (error == 1)
-	// if (intarr)
-	// 	free (intarr);
-	return (error);
+	freeer (arr);
+	return (intarr);
 }

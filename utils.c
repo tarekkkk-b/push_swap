@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tabadawi <tabadawi@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/31 16:25:31 by tabadawi          #+#    #+#             */
+/*   Updated: 2024/01/31 16:25:33 by tabadawi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	_strlen(const char *str)
@@ -36,12 +48,14 @@ char	*_strdup(char *s1)
 	return (s2);
 }
 
-char	**freeer(char **split, int i)
+char	**freeer(char **split)
 {
-	while (i-- > 0)
-		free (split[i]);
-	free (split);
-	return (NULL);
+	int	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
 }
 
 int	wordcount(const char *s, char c)
