@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tabadawi <tabadawi@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:31 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/01/31 16:25:33 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:35:13 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char	**freeer(char **split)
 	while (split[i])
 		free(split[i++]);
 	free(split);
+	return (NULL);
 }
 
 int	wordcount(const char *s, char c)

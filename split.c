@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tabadawi <tabadawi@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:16 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/01/31 16:25:20 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/01 21:03:13 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

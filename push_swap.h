@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tabadawi <tabadawi@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:03 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/01/31 16:25:07 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/01 21:05:40 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ typedef struct s_stacker
 	char	**tarr;
 }	t_stack;
 
-void	limitcheck(long result);
-long	t_atoi(const char *str);
+long	t_atoi(const char *str, int *intarr, char **arr);
 int		ft_isspace(char	*str);
 int		ft_isdigit(int c);
 char	*strjoin(char *s1, char *s2);

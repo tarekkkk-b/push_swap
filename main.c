@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tabadawi <tabadawi@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/01/31 16:24:47 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/01 21:13:27 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ int	*stackmaker(char **str, int count)
 	if (!stack.tarr)
 	{
 		free(stack.input);
-		exit(1);
+		exit(printf("bad5\n"));
 	}
 	stack.i = 0;
 	free(stack.input);
 	if (!stack.tarr || stack.tarr[stack.i] == 0 || stack.tarr[stack.i] == NULL)
 	{
 		freeer(stack.tarr);
-		exit(printf("bad\n"));
+		exit(printf("bad2\n"));
 	}
 	stack.intarr = parser(stack.tarr, stack.numbercount);
 	if (stack.intarr)
-		printf("good");
+		printf("good\n");
 	else
-		exit(printf("bad\n"));
+		exit(printf("bad3\n"));
 	return (stack.intarr);
 }
 
@@ -45,7 +45,8 @@ int	main(int ac, char **av)
 	int	*intarr;
 
 	if (ac < 2)
-		exit(printf("bad\n"));
+		exit(printf("bad1\n"));
 	intarr = stackmaker(av, ac - 1);
+	free (intarr);
 	return (0);
 }

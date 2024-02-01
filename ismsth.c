@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ismsth.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tabadawi <tabadawi@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:33 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/01/31 16:24:35 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/01 21:12:39 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	ft_isspace(char	*str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == ' ')
-			return (1);
+		if (str[i] != ' ')
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 int	ft_isdigit(int c)

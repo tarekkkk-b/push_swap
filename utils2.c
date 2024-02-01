@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tabadawi <tabadawi@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:44 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/01/31 16:25:46 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/01 21:10:41 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ int	checker(int **intarr, int number, int count)
 
 char	*joined(char *input, char **split, int count)
 {
-	int		i;
+	int	i;
 
 	i = 1;
 	if (split[i][0] == 0 || split[i] == NULL)
-		exit (printf("bad\n"));
+		exit (printf("bad6\n"));
 	while (i <= count)
 	{
 		if (ft_isspace(split[i]) == 1)
-			exit(printf("bad\n"));
+			exit(printf("bad7\n"));
 		i++;
 	}
 	i = 1;
@@ -49,7 +49,7 @@ char	*joined(char *input, char **split, int count)
 		if (split[i][0] == 0 || split[i] == NULL)
 		{
 			free (input);
-			exit (printf("bad\n"));
+			exit (printf("bad8\n"));
 		}
 		input = strjoin(input, split[i]);
 		i++;

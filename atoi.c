@@ -3,22 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   atoi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tabadawi <tabadawi@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:24 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/01/31 16:24:26 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/01 21:09:12 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	limitcheck(long result)
+static void	limitcheck(long result, int *intarr, char **arr)
 {
 	if (result > INT_MAX || result < INT_MIN)
-		exit(printf("bad"));
+	{
+		free (intarr);
+		freeer (arr);
+		exit(printf("bad4\n"));
+	}
 }
 
-long	t_atoi(const char *str)
+long	t_atoi(const char *str, int *intarr, char **arr)
 {
 	int		i;
 	int		sign;
@@ -43,6 +47,6 @@ long	t_atoi(const char *str)
 		i++;
 	}
 	result = result * sign;
-	limitcheck(result);
+	limitcheck(result, intarr, arr);
 	return (result);
 }

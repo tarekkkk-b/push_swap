@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tabadawi <tabadawi@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:54 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/01/31 16:24:55 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/01 21:06:26 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	hmm(char *str, int	*arr)
 int	hmm2(int *intarr, char **str, int i)
 {
 	if (i == 0)
-		intarr[i] = t_atoi(str[i]);
+		intarr[i] = t_atoi(str[i], intarr, str);
 	else
 	{
-		if (checker(&intarr, t_atoi(str[i]), i) == 0)
-			intarr[i] = t_atoi(str[i]);
+		if (checker(&intarr, t_atoi(str[i], intarr, str), i) == 0)
+			intarr[i] = t_atoi(str[i], intarr, str);
 		else
 			return (free (intarr), 1);
 	}
