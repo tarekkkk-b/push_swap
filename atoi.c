@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:24 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/01 21:09:12 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:05:03 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	limitcheck(long result, int *intarr, char **arr)
 	{
 		free (intarr);
 		freeer (arr);
-		exit(printf("bad4\n"));
+		exit(1);
 	}
 }
 

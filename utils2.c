@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:44 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/01 21:10:41 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:04:07 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ char	*joined(char *input, char **split, int count)
 
 	i = 1;
 	if (split[i][0] == 0 || split[i] == NULL)
-		exit (printf("bad6\n"));
+		exit (1);
 	while (i <= count)
 	{
 		if (ft_isspace(split[i]) == 1)
-			exit(printf("bad7\n"));
+			exit(1);
 		i++;
 	}
 	i = 1;
@@ -49,7 +49,7 @@ char	*joined(char *input, char **split, int count)
 		if (split[i][0] == 0 || split[i] == NULL)
 		{
 			free (input);
-			exit (printf("bad8\n"));
+			exit (1);
 		}
 		input = strjoin(input, split[i]);
 		i++;

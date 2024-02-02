@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/01 21:13:27 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:04:32 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ int	*stackmaker(char **str, int count)
 	if (!stack.tarr)
 	{
 		free(stack.input);
-		exit(printf("bad5\n"));
+		exit(1);
 	}
 	stack.i = 0;
 	free(stack.input);
 	if (!stack.tarr || stack.tarr[stack.i] == 0 || stack.tarr[stack.i] == NULL)
 	{
 		freeer(stack.tarr);
-		exit(printf("bad2\n"));
+		exit(1);
 	}
 	stack.intarr = parser(stack.tarr, stack.numbercount);
 	if (stack.intarr)
 		printf("good\n");
 	else
-		exit(printf("bad3\n"));
+		exit(1);
 	return (stack.intarr);
 }
 
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 	int	*intarr;
 
 	if (ac < 2)
-		exit(printf("bad1\n"));
+		exit(0);
 	intarr = stackmaker(av, ac - 1);
 	free (intarr);
 	return (0);
