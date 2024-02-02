@@ -39,7 +39,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-int	ft_lstsize(t_list *lst);
+int	    ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstlast(t_list *lst);
@@ -48,20 +48,20 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void	*));
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-long	t_atoi(const char *str, int *intarr, char **arr);
+long	ft_atoi(const char *str, int *intarr, char **arr);
 int		ft_isspace(char	*str);
 int		ft_isdigit(int c);
-char	*strjoin(char *s1, char *s2);
+char	*ft_strjoin(char *s1, char *s2);
 int		hmm(char *str, int	*arr);
 int		hmm2(int *intarr, char **str, int i);
 int		*parser(char **arr, int count);
-int		*stackmaker(char **str, int count);
+int		*input_handling(char **str, int count);
 char	**ft_split(char const *s, char c);
-int		_strlen(const char *str);
+int		ft_strlen(const char *str);
 size_t	_strlcpy(char *dst, const char *src, size_t dstsize);
 int		checker(int **intarr, int number, int count);
-char	*joined(char *input, char **split, int count);
-char	**freeer(char **split);
+char	*joining(char *input, char **split, int count);
+char	**freeing(char **split);
 int		wordcount(const char *s, char c);
 char	*_strdup(char *s1);
 

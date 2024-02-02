@@ -12,24 +12,24 @@
 
 #include "push_swap.h"
 
-int	*stackmaker(char **str, int count)
+int	*input_handling(char **str, int count)
 {
 	t_stack	stack;
 
 	stack.input = NULL;
-	stack.input = joined(stack.input, str, count);
+	stack.input = joining(stack.input, str, count);
 	stack.numbercount = wordcount(stack.input, ' ');
 	stack.tarr = ft_split(stack.input, ' ');
 	if (!stack.tarr)
 	{
-		free(stack.input);
+		free (stack.input);
 		exit(1);
 	}
 	stack.i = 0;
-	free(stack.input);
+	free (stack.input);
 	if (!stack.tarr || stack.tarr[stack.i] == 0 || stack.tarr[stack.i] == NULL)
 	{
-		freeer(stack.tarr);
+		freeing(stack.tarr);
 		exit(1);
 	}
 	stack.intarr = parser(stack.tarr, stack.numbercount);
@@ -46,7 +46,7 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		exit(0);
-	intarr = stackmaker(av, ac - 1);
+	intarr = input_handling(av, ac - 1);
 	free (intarr);
 	return (0);
 }

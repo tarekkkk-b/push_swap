@@ -56,14 +56,14 @@ static char	*wordsize(const char *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	t_split	hey;
+	t_split	var;
 
-	hey.i = 0;
+	var.i = 0;
 	if (!s)
 		return (NULL);
-	hey.wordcount = words(s, c);
-	hey.split = malloc(sizeof(char *) * (hey.wordcount + 1));
-	if (!hey.split)
+	var.wordcount = words(s, c);
+	var.split = malloc(sizeof(char *) * (var.wordcount + 1));
+	if (!var.split)
 		return (NULL);
 	while (*s)
 	{
@@ -71,14 +71,14 @@ char	**ft_split(char const *s, char c)
 			s++;
 		if (*s && *s != c)
 		{
-			hey.split[hey.i] = wordsize(s, c);
-			if (!(hey.split[hey.i]))
-				return (freeer(hey.split));
-			hey.i++;
+			var.split[var.i] = wordsize(s, c);
+			if (!(var.split[var.i]))
+				return (freeing(var.split));
+			var.i++;
 			while (*s && *s != c)
 				s++;
 		}
 	}
-	hey.split[hey.i] = (NULL);
-	return (hey.split);
+	var.split[var.i] = (NULL);
+	return (var.split);
 }

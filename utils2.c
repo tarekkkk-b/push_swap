@@ -29,7 +29,7 @@ int	checker(int **intarr, int number, int count)
 	return (0);
 }
 
-char	*joined(char *input, char **split, int count)
+char	*joining(char *input, char **split, int count)
 {
 	int	i;
 
@@ -49,9 +49,9 @@ char	*joined(char *input, char **split, int count)
 		if (split[i][0] == 0 || split[i] == NULL)
 		{
 			free (input);
-			exit (1);
+			exit(1);
 		}
-		input = strjoin(input, split[i]);
+		input = ft_strjoin(input, split[i]);
 		i++;
 	}
 	return (input);

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
 	int	i;
 
@@ -30,32 +30,32 @@ size_t	_strlcpy(char *dst, const char *src, size_t dstsize)
 
 	i = -1;
 	if (dstsize == 0)
-		return (_strlen(src));
+		return (ft_strlen(src));
 	while (src[++i] && (i < dstsize - 1))
 		dst[i] = src[i];
 	dst[i] = '\0';
-	return (_strlen(src));
+	return (ft_strlen(src));
 }
 
 char	*_strdup(char *s1)
 {
 	char	*s2;
 
-	s2 = malloc(sizeof(char) * (_strlen(s1) + 1));
+	s2 = malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (!s2)
 		return (NULL);
-	_strlcpy(s2, s1, _strlen(s1) + 1);
+	_strlcpy(s2, s1, ft_strlen(s1) + 1);
 	return (s2);
 }
 
-char	**freeer(char **split)
+char	**freeing(char **split)
 {
 	int	i;
 
 	i = 0;
 	while (split[i])
-		free(split[i++]);
-	free(split);
+		free (split[i++]);
+	free (split);
 	return (NULL);
 }
 

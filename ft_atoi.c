@@ -17,12 +17,13 @@ static void	limitcheck(long result, int *intarr, char **arr)
 	if (result > INT_MAX || result < INT_MIN)
 	{
 		free (intarr);
-		freeer (arr);
+		freeing(arr);
+        printf("Error\n");
 		exit(1);
 	}
 }
 
-long	t_atoi(const char *str, int *intarr, char **arr)
+long	ft_atoi(const char *str, int *intarr, char **arr)
 {
 	int		i;
 	int		sign;

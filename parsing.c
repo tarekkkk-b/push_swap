@@ -20,11 +20,11 @@ int	hmm(char *str, int	*arr)
 	if (str[j] == '-' || str[j] == '+')
 		j++;
 	if (str[j] == '\0')
-		return (free(arr), 1);
+		return (free (arr), 1);
 	while (str[j])
 	{
 		if (ft_isdigit(str[j]) == 0)
-			return (free(arr), 1);
+			return (free (arr), 1);
 		else
 			j++;
 	}
@@ -34,11 +34,11 @@ int	hmm(char *str, int	*arr)
 int	hmm2(int *intarr, char **str, int i)
 {
 	if (i == 0)
-		intarr[i] = t_atoi(str[i], intarr, str);
+		intarr[i] = ft_atoi(str[i], intarr, str);
 	else
 	{
-		if (checker(&intarr, t_atoi(str[i], intarr, str), i) == 0)
-			intarr[i] = t_atoi(str[i], intarr, str);
+		if (checker(&intarr, ft_atoi(str[i], intarr, str), i) == 0)
+			intarr[i] = ft_atoi(str[i], intarr, str);
 		else
 			return (free (intarr), 1);
 	}
@@ -53,18 +53,18 @@ int	*parser(char **arr, int count)
 	i = 0;
 	intarr = malloc(sizeof(int) * count);
 	if (!intarr)
-		return (freeer (arr), NULL);
+		return (freeing(arr), NULL);
 	while (i < count)
 	{
 		if (hmm(arr[i], intarr) == 0)
 		{
 			if (hmm2(intarr, arr, i) == 1)
-				return (freeer(arr), NULL);
+				return (freeing(arr), NULL);
 		}
 		else
-			return (freeer(arr), NULL);
+			return (freeing(arr), NULL);
 		i++;
 	}
-	freeer (arr);
+	freeing(arr);
 	return (intarr);
 }
