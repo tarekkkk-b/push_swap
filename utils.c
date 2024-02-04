@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:31 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/01 20:35:13 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/04 17:23:25 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-size_t	_strlcpy(char *dst, const char *src, size_t dstsize)
+static size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 
@@ -37,15 +37,15 @@ size_t	_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (ft_strlen(src));
 }
 
-char	*_strdup(char *s1)
+char	*ft_strdup(char *argv)
 {
-	char	*s2;
+	char	*input;
 
-	s2 = malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (!s2)
+	input = malloc(sizeof(char) * (ft_strlen(argv) + 1));
+	if (!input)
 		return (NULL);
-	_strlcpy(s2, s1, ft_strlen(s1) + 1);
-	return (s2);
+	ft_strlcpy(input, argv, ft_strlen(argv) + 1);
+	return (input);
 }
 
 char	**freeing(char **split)
@@ -59,20 +59,20 @@ char	**freeing(char **split)
 	return (NULL);
 }
 
-int	wordcount(const char *s, char c)
+int	inputcount(const char *input, char sep)
 {
 	int	i;
 	int	x;
 
 	i = 0;
 	x = 0;
-	while (s[i])
+	while (input[i])
 	{
-		while (s[i] == c)
+		while (input[i] == sep)
 			i++;
-		if (s[i])
+		if (input[i])
 			x++;
-		while (s[i] && s[i] != c)
+		while (input[i] && input[i] != sep)
 			i++;
 	}
 	return (x);

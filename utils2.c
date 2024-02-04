@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:44 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/02 18:04:07 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/04 15:47:21 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,29 @@ int	checker(int **intarr, int number, int count)
 	return (0);
 }
 
-char	*joining(char *input, char **split, int count)
+char	*join_args(char *input, char **av, int ac)
 {
 	int	i;
 
 	i = 1;
-	if (split[i][0] == 0 || split[i] == NULL)
+	if (av[i][0] == 0 || av[i] == NULL)
 		exit (1);
-	while (i <= count)
+	while (i <= ac)
 	{
-		if (ft_isspace(split[i]) == 1)
+		if (ft_isspace(av[i]) == 1)
 			exit(1);
 		i++;
 	}
 	i = 1;
-	input = _strdup(split[i++]);
-	while (i <= count)
+	input = ft_strdup(av[i++]);
+	while (i <= ac)
 	{
-		if (split[i][0] == 0 || split[i] == NULL)
+		if (av[i][0] == 0 || av[i] == NULL)
 		{
 			free (input);
 			exit(1);
 		}
-		input = ft_strjoin(input, split[i]);
+		input = ft_strjoin(input, av[i]);
 		i++;
 	}
 	return (input);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:24 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/02 18:05:03 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/04 22:35:32 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,32 @@ static void	limitcheck(long result, int *intarr, char **arr)
 	{
 		free (intarr);
 		freeing(arr);
-        printf("Error\n");
+		printf("Error\n");
 		exit(1);
 	}
+}
+
+static long	overflowcheck(const char *str, int *intarr, char **arr, int i)
+{
+	long	result;
+	long	temp;
+
+	result = 0;
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	{
+		temp = result;
+		result *= 10;
+		result += str[i] - '0';
+		if (result < temp)
+		{
+			free (intarr);
+			freeing (arr);
+			printf("Error\n");
+			exit (1);
+		}
+		i++;
+	}
+	return (result);
 }
 
 long	ft_atoi(const char *str, int *intarr, char **arr)
@@ -41,13 +64,7 @@ long	ft_atoi(const char *str, int *intarr, char **arr)
 	}
 	else if (str[i] == '+')
 		i++;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
-	{
-		result *= 10;
-		result += str[i] - '0';
-		i++;
-	}
+	result = overflowcheck(str, intarr, arr, i);
 	result = result * sign;
-	limitcheck(result, intarr, arr);
-	return (result);
+	return (limitcheck(result, intarr, arr), result);
 }

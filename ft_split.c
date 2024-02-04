@@ -1,82 +1,82 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split.c                                            :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 16:25:16 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/01 21:03:13 by tabadawi         ###   ########.fr       */
+/*   Created: 2024/02/04 18:34:49 by tabadawi          #+#    #+#             */
+/*   Updated: 2024/02/04 18:34:57 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	words(const char *s, char c)
+static int	count(const char *input, char sep)
 {
 	int		wordcount;
 
 	wordcount = 0;
-	while (*s)
+	while (*input)
 	{
-		while (*s == c)
-			s++;
-		while (*s != c && *s)
+		while (*input == sep)
+			input++;
+		while (*input != sep && *input)
 		{
-			s++;
-			if (*s == c || *s == '\0')
+			input++;
+			if (*input == sep || *input == '\0')
 				wordcount++;
 		}
 	}
 	return (wordcount);
 }
 
-static char	*wordsize(const char *s, char c)
+static char	*word_alloc(const char *input, char sep)
 {
 	int		i;
 	char	*word;
 
 	i = 0;
-	if (!s)
+	if (!input)
 		return (NULL);
-	while (s[i] != '\0' && s[i] != c)
+	while (input[i] != '\0' && input[i] != sep)
 		i++;
 	word = malloc(sizeof(char) * (i + 1));
 	if (!word)
 		return (NULL);
 	i = 0;
-	while (s[i] != '\0' && s[i] != c)
+	while (input[i] != '\0' && input[i] != sep)
 	{
-		word[i] = s[i];
+		word[i] = input[i];
 		i++;
 	}
 	word[i] = '\0';
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *input, char sep)
 {
 	t_split	var;
 
 	var.i = 0;
-	if (!s)
+	if (!input)
 		return (NULL);
-	var.wordcount = words(s, c);
+	var.wordcount = count(input, sep);
 	var.split = malloc(sizeof(char *) * (var.wordcount + 1));
 	if (!var.split)
 		return (NULL);
-	while (*s)
+	while (*input)
 	{
-		while (*s && *s == c)
-			s++;
-		if (*s && *s != c)
+		while (*input && *input == sep)
+			input++;
+		if (*input && *input != sep)
 		{
-			var.split[var.i] = wordsize(s, c);
+			var.split[var.i] = word_alloc(input, sep);
 			if (!(var.split[var.i]))
 				return (freeing(var.split));
 			var.i++;
-			while (*s && *s != c)
-				s++;
+			while (*input && *input != sep)
+				input++;
 		}
 	}
 	var.split[var.i] = (NULL);

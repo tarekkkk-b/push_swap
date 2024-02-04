@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/02 18:04:32 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/04 17:42:04 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*input_handling(char **str, int count)
+int	*input_handling(char **av, int ac)
 {
-	t_stack	stack;
+	t_input	var;
 
-	stack.input = NULL;
-	stack.input = joining(stack.input, str, count);
-	stack.numbercount = wordcount(stack.input, ' ');
-	stack.tarr = ft_split(stack.input, ' ');
-	if (!stack.tarr)
+	var.input = NULL;
+	var.input = join_args(var.input, av, ac);
+	var.numbercount = inputcount(var.input, ' ');
+	var.sp_inp = ft_split(var.input, ' ');
+	if (!var.sp_inp)
 	{
-		free (stack.input);
+		free (var.input);
 		exit(1);
 	}
-	stack.i = 0;
-	free (stack.input);
-	if (!stack.tarr || stack.tarr[stack.i] == 0 || stack.tarr[stack.i] == NULL)
+	var.i = 0;
+	free (var.input);
+	if (!var.sp_inp || var.sp_inp[var.i] == 0 || var.sp_inp[var.i] == NULL)
 	{
-		freeing(stack.tarr);
+		freeing(var.sp_inp);
 		exit(1);
 	}
-	stack.intarr = parser(stack.tarr, stack.numbercount);
-	if (stack.intarr)
+	var.intarr = parser(var.sp_inp, var.numbercount);
+	if (var.intarr)
 		printf("good\n");
 	else
 		exit(1);
-	return (stack.intarr);
+	return (var.intarr);
 }
 
 int	main(int ac, char **av)

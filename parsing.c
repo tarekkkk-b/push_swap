@@ -6,65 +6,65 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:54 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/01 21:06:26 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/04 17:38:46 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	hmm(char *str, int	*arr)
+static int	digitcheck(char *sp_inp, int *intarr)
 {
 	int	j;
 
 	j = 0;
-	if (str[j] == '-' || str[j] == '+')
+	if (sp_inp[j] == '-' || sp_inp[j] == '+')
 		j++;
-	if (str[j] == '\0')
-		return (free (arr), 1);
-	while (str[j])
+	if (sp_inp[j] == '\0')
+		return (free (intarr), 1);
+	while (sp_inp[j])
 	{
-		if (ft_isdigit(str[j]) == 0)
-			return (free (arr), 1);
+		if (ft_isdigit(sp_inp[j]) == 0)
+			return (free (intarr), 1);
 		else
 			j++;
 	}
 	return (0);
 }
 
-int	hmm2(int *intarr, char **str, int i)
+static int	dupcheck(int *intarr, char **sp_inp, int i)
 {
 	if (i == 0)
-		intarr[i] = ft_atoi(str[i], intarr, str);
+		intarr[i] = ft_atoi(sp_inp[i], intarr, sp_inp);
 	else
 	{
-		if (checker(&intarr, ft_atoi(str[i], intarr, str), i) == 0)
-			intarr[i] = ft_atoi(str[i], intarr, str);
+		if (checker(&intarr, ft_atoi(sp_inp[i], intarr, sp_inp), i) == 0)
+			intarr[i] = ft_atoi(sp_inp[i], intarr, sp_inp);
 		else
 			return (free (intarr), 1);
 	}
 	return (0);
 }
 
-int	*parser(char **arr, int count)
+int	*parser(char **sp_inp, int numbercount)
 {
 	int	i;
 	int	*intarr;
 
 	i = 0;
-	intarr = malloc(sizeof(int) * count);
+	intarr = malloc(sizeof(int) * numbercount);
 	if (!intarr)
-		return (freeing(arr), NULL);
-	while (i < count)
+		return (freeing(sp_inp), NULL);
+	while (i < numbercount)
 	{
-		if (hmm(arr[i], intarr) == 0)
+		if (digitcheck(sp_inp[i], intarr) == 0)
 		{
-			if (hmm2(intarr, arr, i) == 1)
-				return (freeing(arr), NULL);
+			if (dupcheck(intarr, sp_inp, i) == 1)
+				return (freeing(sp_inp), NULL);
 		}
 		else
-			return (freeing(arr), NULL);
+			return (freeing(sp_inp), NULL);
 		i++;
 	}
-	freeing(arr);
+	freeing(sp_inp);
 	return (intarr);
 }
