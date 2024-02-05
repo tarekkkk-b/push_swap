@@ -17,7 +17,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 SRC	=	ft_atoi.c is_smth.c ft_strjoin.c parsing.c \
-		push_swap.c ft_split.c utils.c utils2.c \
+		push_swap.c ft_split.c utils.c utils2.c
 
 OBJ = $(SRC:.c=.o)
 

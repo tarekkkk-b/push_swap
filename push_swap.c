@@ -21,22 +21,16 @@ int	*input_handling(char **av, int ac)
 	var.numbercount = inputcount(var.input, ' ');
 	var.sp_inp = ft_split(var.input, ' ');
 	if (!var.sp_inp)
-	{
-		free (var.input);
-		exit(1);
-	}
+		exiting(var.input, NULL);
 	var.i = 0;
 	free (var.input);
 	if (!var.sp_inp || var.sp_inp[var.i] == 0 || var.sp_inp[var.i] == NULL)
-	{
-		freeing(var.sp_inp);
-		exit(1);
-	}
+		exiting(NULL, var.sp_inp);
 	var.intarr = parser(var.sp_inp, var.numbercount);
 	if (var.intarr)
 		printf("good\n");
 	else
-		exit(1);
+		exiting(NULL, NULL);
 	return (var.intarr);
 }
 

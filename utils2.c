@@ -33,11 +33,11 @@ char	*join_args(char *input, char **av, int ac)
 
 	i = 1;
 	if (av[i][0] == 0 || av[i] == NULL)
-		exit (1);
+		exiting(NULL, NULL);
 	while (i <= ac)
 	{
 		if (ft_isspace(av[i]) == 1)
-			exit(1);
+			exiting(NULL, NULL);
 		i++;
 	}
 	i = 1;
@@ -45,12 +45,18 @@ char	*join_args(char *input, char **av, int ac)
 	while (i <= ac)
 	{
 		if (av[i][0] == 0 || av[i] == NULL)
-		{
-			free (input);
-			exit(1);
-		}
+			exiting(input, NULL);
 		input = ft_strjoin(input, av[i]);
 		i++;
 	}
 	return (input);
 }
+void	exiting(void *intarr, char **sp_inp)
+{
+	if (intarr)
+		free (intarr);
+	if (sp_inp)
+		freeing(sp_inp);
+	write (2, "Error\n", 6);
+	exit(1);
+}	

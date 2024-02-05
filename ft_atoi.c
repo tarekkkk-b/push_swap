@@ -15,12 +15,7 @@
 static void	limitcheck(long result, int *intarr, char **arr)
 {
 	if (result > INT_MAX || result < INT_MIN)
-	{
-		free (intarr);
-		freeing(arr);
-		printf("Error\n");
-		exit(1);
-	}
+		exiting(intarr, arr);
 }
 
 static long	overflowcheck(const char *str, int *intarr, char **arr, int i)
@@ -35,12 +30,7 @@ static long	overflowcheck(const char *str, int *intarr, char **arr, int i)
 		result *= 10;
 		result += str[i] - '0';
 		if (result < temp)
-		{
-			free (intarr);
-			freeing (arr);
-			printf("Error\n");
-			exit (1);
-		}
+			exiting(intarr, arr);
 		i++;
 	}
 	return (result);

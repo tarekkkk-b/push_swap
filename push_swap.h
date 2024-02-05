@@ -19,6 +19,7 @@
 
 # include <stdlib.h>
 # include <limits.h>
+# include <unistd.h>
 # include <stdio.h>
 
 //###################################################//
@@ -59,6 +60,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void	*));
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+void	exiting(void *intarr, char **sp_inp);
 long	ft_atoi(const char *sp_inp_i, int *intarr, char **sp_inp);
 char	**ft_split(char const *input, char sep);
 char	**freeing(char **split);
