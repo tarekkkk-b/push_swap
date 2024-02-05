@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:54 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/04 17:38:46 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:30:50 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	dupcheck(int *intarr, char **sp_inp, int i)
 		intarr[i] = ft_atoi(sp_inp[i], intarr, sp_inp);
 	else
 	{
-		if (checker(&intarr, ft_atoi(sp_inp[i], intarr, sp_inp), i) == 0)
+		if (checker(intarr, ft_atoi(sp_inp[i], intarr, sp_inp), i) == 0)
 			intarr[i] = ft_atoi(sp_inp[i], intarr, sp_inp);
 		else
 			return (free (intarr), 1);

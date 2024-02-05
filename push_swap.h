@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:03 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/04 18:32:49 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:31:59 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,19 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void	*));
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-long	ft_atoi(const char *str, int *intarr, char **arr);
-char	**ft_split(char const *s, char c);
+long	ft_atoi(const char *sp_inp_i, int *intarr, char **sp_inp);
+char	**ft_split(char const *input, char sep);
 char	**freeing(char **split);
-char	*ft_strjoin(char *s1, char *s2);
-char	*join_args(char *input, char **split, int count);
-char	*ft_strdup(char *s1);
+char	*ft_strjoin(char *input, char *argv);
+char	*join_args(char *input, char **av, int ac);
+char	*ft_strdup(char *argv);
 int		ft_lstsize(t_list *lst);
-int		ft_isspace(char	*str);
-int		ft_isdigit(int c);
+int		ft_isspace(char	*av);
+int		ft_isdigit(int sp_inp);
 int		ft_strlen(const char *str);
-int		checker(int **intarr, int number, int count);
-int		inputcount(const char *s, char c);
-int		*input_handling(char **str, int count);
-int		*parser(char **arr, int count);
+int		checker(int *intarr, int number, int count);
+int		inputcount(const char *input, char sep);
+int		*input_handling(char **av, int ac);
+int		*parser(char **sp_inp, int numbercount);
 
 #endif

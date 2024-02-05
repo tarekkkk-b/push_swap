@@ -6,22 +6,20 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:44 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/04 15:47:21 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:42:02 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	checker(int **intarr, int number, int count)
+int	checker(int *intarr, int number, int count)
 {
 	int	i;
-	int	*current;
 
 	i = 0;
-	current = *intarr;
-	while (i < (int) count)
+	while (i < count)
 	{
-		if (number == current[i])
+		if (number == intarr[i])
 			return (1);
 		else
 			i++;

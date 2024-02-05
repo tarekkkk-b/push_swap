@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:24 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/04 22:35:32 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:23:52 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static long	overflowcheck(const char *str, int *intarr, char **arr, int i)
 	return (result);
 }
 
-long	ft_atoi(const char *str, int *intarr, char **arr)
+long	ft_atoi(const char *sp_inp_i, int *intarr, char **sp_inp)
 {
 	int		i;
 	int		sign;
@@ -55,16 +55,16 @@ long	ft_atoi(const char *str, int *intarr, char **arr)
 	i = 0;
 	sign = 1;
 	result = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+	while (sp_inp_i[i] == 32 || (sp_inp_i[i] >= 9 && sp_inp_i[i] <= 13))
 		i++;
-	if (str[i] == '-')
+	if (sp_inp_i[i] == '-')
 	{
 		sign = -1;
 		i++;
 	}
-	else if (str[i] == '+')
+	else if (sp_inp_i[i] == '+')
 		i++;
-	result = overflowcheck(str, intarr, arr, i);
+	result = overflowcheck(sp_inp_i, intarr, sp_inp, i);
 	result = result * sign;
-	return (limitcheck(result, intarr, arr), result);
+	return (limitcheck(result, intarr, sp_inp), result);
 }
