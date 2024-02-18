@@ -6,7 +6,7 @@
 #    By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 16:34:18 by tabadawi          #+#    #+#              #
-#    Updated: 2024/02/02 18:11:40 by tabadawi         ###   ########.fr        #
+#    Updated: 2024/02/18 17:22:36 by tabadawi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 SRC	=	ft_atoi.c is_smth.c ft_strjoin.c parsing.c \
-		push_swap.c ft_split.c utils.c utils2.c
+		push_swap.c ft_split.c utils.c utils2.c ft_lstnew.c \
+		ft_lstadd_back.c ft_lstlast.c ft_lstclear.c ft_lstdelone.c
 
 OBJ = $(SRC:.c=.o)
 

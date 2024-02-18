@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:44:16 by tabadawi          #+#    #+#             */
-/*   Updated: 2023/11/28 14:16:39 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/18 17:23:35 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
+	(void)del;
 	if (del != NULL)
 	{
 		if (lst)
 		{
-			(*del)(lst->content);
 			free(lst);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:03 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/05 20:31:59 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/18 22:20:40 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,21 @@ typedef struct s_input
 
 typedef struct s_list
 {
-	void			*content;
+	int				content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_ht
+{
+	t_list	*head;
+	t_list	*tail;
+} 	t_ht;
 
 //###################################################//
 //					functions						//
 //##################################################//
 
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstnew(int content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstiter(t_list *lst, void (*f)(void *));
@@ -73,7 +79,7 @@ int		ft_isdigit(int sp_inp);
 int		ft_strlen(const char *str);
 int		checker(int *intarr, int number, int count);
 int		inputcount(const char *input, char sep);
-int		*input_handling(char **av, int ac);
-int		*parser(char **sp_inp, int numbercount);
+int		*input_handling(char **av, int ac, int *i);
+int		*parser(char **sp_inp, int numbercount, int *i2);
 
 #endif
