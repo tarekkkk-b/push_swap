@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/18 22:20:55 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:54:39 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,26 +61,26 @@ static t_list	*stackmaker(int *intarr, int list_size, t_list *node)
 
 int	main(int ac, char **av)
 {
-	int	*intarr;
-	int list_size;
-	t_list	*stack;
-	t_ht pointer;
+	int		*intarr;
+	int 	list_size;
+	t_list	*stack_a;
+	t_list	*stack_b = NULL;
+	t_ht	pointera;
 
 	list_size = 0;
-	stack = NULL;
+	stack_a = NULL;
 	if (ac < 2)
 		exit(0);
 	intarr = input_handling(av, ac - 1, &list_size);
-	stack = stackmaker(intarr, list_size, stack);
-	printf("STACK A:\n\n");
-	pointer.head = stack;
-	pointer.tail = ft_lstlast(stack);
-	printf("%d\n", pointer.head->content);
-	printf("%d\n", pointer.tail->content);
-	ft_lstclear(&stack, free);
+	stack_a = stackmaker(intarr, list_size, stack_a);
+	pointera.head = stack_a;
+	pointera.tail = ft_lstlast(stack_a);
+	ft_lstclear(&stack_a, free);
 	return (0);
 }
 
+
+///18 feb
 // need to create a list struct
 	// includes int num, next pointer
 	// create a struct that has the head and tail pointer
@@ -89,3 +89,14 @@ int	main(int ac, char **av)
 	// uses linked lists function to create nodes
 // free intarr in the new function
 // return to main
+
+
+///19feb
+//create rules functions
+	//push, swap, rot and rev rot
+	//freeing function for temp pointers used
+	//realize patterns
+//sort three
+
+//20 feb
+//time and space complexity look into
