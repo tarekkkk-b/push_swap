@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/20 16:54:39 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:44:11 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,58 @@ int	main(int ac, char **av)
 	int 	list_size;
 	t_list	*stack_a;
 	t_list	*stack_b = NULL;
-	t_ht	pointera;
-
 	list_size = 0;
 	stack_a = NULL;
 	if (ac < 2)
 		exit(0);
 	intarr = input_handling(av, ac - 1, &list_size);
 	stack_a = stackmaker(intarr, list_size, stack_a);
-	pointera.head = stack_a;
-	pointera.tail = ft_lstlast(stack_a);
+	t_list	*temp = stack_a;
+	printf("STACK A: ");
+	while (temp)
+	{
+		printf ("%d ", temp->content);
+		temp = temp->next;
+	}
+	while (stack_a->next)
+		push(&stack_a, &stack_b);
+	temp = stack_a;
+	printf("\nSTACK B: ");
+	printf("\n\n\nSTACK A: ");
+	while (temp)
+	{
+		printf ("%d ", temp->content);
+		temp = temp->next;
+	}
+	temp = stack_b;
+	printf("\nSTACK B: ");
+	while (temp)
+	{
+		printf ("%d ", temp->content);
+		temp = temp->next;
+	}
+	printf("\n");
+	// temp = stack_a;
+	// while (i < list_size - 1)
+	// {
+	// 	push(&stack_a, &stack_b);
+	// 	i++;
+	// }
+	// printf("\nSTACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// temp = stack_b;
+	// printf("\nSTACK B: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
 	ft_lstclear(&stack_a, free);
+	ft_lstclear(&stack_b, free);
 	return (0);
 }
 

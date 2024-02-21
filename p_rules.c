@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:23 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/20 19:11:53 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:31:20 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,30 @@
 
 void	push(t_list	**stack1, t_list **stack2)
 {
+	t_list	*temp;
+	int		integer;
 	
+	integer = (*stack1)->content;
+	temp = *stack1;
+	*stack1 = (*stack1)->next;
+	free (temp);
+	temp = ft_lstnew(integer);
+	ft_lstadd_front(stack2, temp);
 }
 
-t_list	pa(t_list **stack_a, t_list **stack_b, int flag)
-{
-	push(stack_b, stack_a);
-	if (flag == 1)
-		write (1, "pa\n", 3);
-}
+// t_list	pa(t_list **stack_a, t_list **stack_b, int flag)
+// {
+// 	push(stack_b, stack_a);
+// 	if (flag == 1)
+// 		write (1, "pa\n", 3);
+// }
 
-t_list	pb(t_list **stack_a, t_list **stack_b, int flag)
-{
-	push(stack_a, stack_b);
-	if (flag == 1)
-		write (1, "pb\n", 3);
-}
+// t_list	pb(t_list **stack_a, t_list **stack_b, int flag)
+// {
+// 	push(stack_a, stack_b);
+// 	if (flag == 1)
+// 		write (1, "pb\n", 3);
+// }
 
 //pa -> Take the first element at the top of b and put it at the top of a.
 		//Do nothing if b is empty.

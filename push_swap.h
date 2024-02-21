@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:03 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/18 22:20:40 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:23:52 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,6 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-typedef struct s_ht
-{
-	t_list	*head;
-	t_list	*tail;
-} 	t_ht;
-
 //###################################################//
 //					functions						//
 //##################################################//
@@ -81,5 +75,6 @@ int		checker(int *intarr, int number, int count);
 int		inputcount(const char *input, char sep);
 int		*input_handling(char **av, int ac, int *i);
 int		*parser(char **sp_inp, int numbercount, int *i2);
+void	push(t_list	**stack1, t_list **stack2);
 
 #endif
