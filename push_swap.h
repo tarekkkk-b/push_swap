@@ -76,5 +76,8 @@ int		inputcount(const char *input, char sep);
 int		*input_handling(char **av, int ac, int *i);
 int		*parser(char **sp_inp, int numbercount, int *i2);
 void	push(t_list	**stack1, t_list **stack2);
+void	swap(t_list **stack);
+void	pa(t_list **stack_a, t_list **stack_b, int flag);
+void	pb(t_list **stack_a, t_list **stack_b, int flag);
 
 #endif

@@ -64,45 +64,27 @@ int	main(int ac, char **av)
 	int		*intarr;
 	int 	list_size;
 	t_list	*stack_a;
-	t_list	*stack_b = NULL;
+	t_list	*stack_b;
 	list_size = 0;
 	stack_a = NULL;
 	if (ac < 2)
 		exit(0);
 	intarr = input_handling(av, ac - 1, &list_size);
 	stack_a = stackmaker(intarr, list_size, stack_a);
-	t_list	*temp = stack_a;
-	printf("STACK A: ");
-	while (temp)
-	{
-		printf ("%d ", temp->content);
-		temp = temp->next;
-	}
-	while (stack_a->next)
-		push(&stack_a, &stack_b);
-	temp = stack_a;
-	printf("\nSTACK B: ");
-	printf("\n\n\nSTACK A: ");
-	while (temp)
-	{
-		printf ("%d ", temp->content);
-		temp = temp->next;
-	}
-	temp = stack_b;
-	printf("\nSTACK B: ");
-	while (temp)
-	{
-		printf ("%d ", temp->content);
-		temp = temp->next;
-	}
-	printf("\n");
-	// temp = stack_a;
-	// while (i < list_size - 1)
+	// push test
+
+	// t_list	*temp = stack_a;
+	// printf("STACK A: ");
+	// while (temp)
 	// {
-	// 	push(&stack_a, &stack_b);
-	// 	i++;
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
 	// }
-	// printf("\nSTACK A: ");
+	// while (stack_a->next)
+	// 	push(&stack_a, &stack_b);
+	// temp = stack_a;
+	// printf("\nSTACK B: ");
+	// printf("\n\n\nSTACK A: ");
 	// while (temp)
 	// {
 	// 	printf ("%d ", temp->content);
@@ -115,6 +97,28 @@ int	main(int ac, char **av)
 	// 	printf ("%d ", temp->content);
 	// 	temp = temp->next;
 	// }
+	// printf("\n");
+
+	// swap test
+
+	// t_list	*temp = stack_a;
+	// printf("BEFORE: ");
+	// while (temp)
+	// {
+	// 	printf("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// swap (&stack_a);
+	// temp = stack_a;
+	// printf("\n\nAFTER: ");
+	// while (temp)
+	// {
+	// 	printf("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf ("\n");
+
+
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);
 	return (0);

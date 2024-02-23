@@ -15,29 +15,33 @@
 void	push(t_list	**stack1, t_list **stack2)
 {
 	t_list	*temp;
-	int		integer;
-	
-	integer = (*stack1)->content;
-	temp = *stack1;
+	temp = (*stack1);
 	*stack1 = (*stack1)->next;
+	ft_lstadd_front(stack2, ft_lstnew(temp->content));
 	free (temp);
-	temp = ft_lstnew(integer);
-	ft_lstadd_front(stack2, temp);
+	// int		integer;
+	
+	// integer = (*stack1)->content;
+	// temp = *stack1;
+	// *stack1 = (*stack1)->next;
+	// free (temp);
+	// temp = ft_lstnew(integer);
+	// ft_lstadd_front(stack2, temp);
 }
 
-// t_list	pa(t_list **stack_a, t_list **stack_b, int flag)
-// {
-// 	push(stack_b, stack_a);
-// 	if (flag == 1)
-// 		write (1, "pa\n", 3);
-// }
+void	pa(t_list **stack_a, t_list **stack_b, int flag)
+{
+	push(stack_b, stack_a);
+	if (flag == 1)
+		write (1, "pa\n", 3);
+}
 
-// t_list	pb(t_list **stack_a, t_list **stack_b, int flag)
-// {
-// 	push(stack_a, stack_b);
-// 	if (flag == 1)
-// 		write (1, "pb\n", 3);
-// }
+void	pb(t_list **stack_a, t_list **stack_b, int flag)
+{
+	push(stack_a, stack_b);
+	if (flag == 1)
+		write (1, "pb\n", 3);
+}
 
 //pa -> Take the first element at the top of b and put it at the top of a.
 		//Do nothing if b is empty.
