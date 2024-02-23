@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:09:24 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/02 21:58:12 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:28:34 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ void	swap(t_list **stack)
 
 
 
-sa (swap a): Swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements.
-sb (swap b): Swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements.
-ss : sa and sb at the same time.
+//sa -> Swap the first 2 elements at the top of stack a.
+//sb -> Swap the first 2 elements at the top of stack b.
+//ss -> sa and sb at the same time.

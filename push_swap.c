@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/21 20:44:11 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/23 19:14:13 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		exit(0);
 	intarr = input_handling(av, ac - 1, &list_size);
+	if (list_size == 1)
+	{
+		free (intarr);
+		exit (0);
+	}
 	stack_a = stackmaker(intarr, list_size, stack_a);
 	// push test
 
@@ -118,7 +123,46 @@ int	main(int ac, char **av)
 	// }
 	// printf ("\n");
 
+	//rev rot test
 
+	// t_list	*temp = stack_a;
+	// printf("BEFORE: ");
+	// while (temp)
+	// {
+	// 	printf("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// revrot (&stack_a);
+	// temp = stack_a;
+	// printf("\n\nAFTER: ");
+	// while (temp)
+	// {
+	// 	printf("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf ("\n");
+	
+	// ft_lstclear(&stack_a, free);
+
+	//rot test
+
+	// t_list	*temp = stack_a;
+	// printf("BEFORE: ");
+	// while (temp)
+	// {
+	// 	printf("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// rot (&stack_a);
+	// temp = stack_a;
+	// printf("\n\nAFTER: ");
+	// while (temp)
+	// {
+	// 	printf("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf ("\n");
+	
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);
 	return (0);

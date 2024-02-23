@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:03 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/21 18:23:52 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/23 18:34:06 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,7 @@ void	push(t_list	**stack1, t_list **stack2);
 void	swap(t_list **stack);
 void	pa(t_list **stack_a, t_list **stack_b, int flag);
 void	pb(t_list **stack_a, t_list **stack_b, int flag);
+void	revrot(t_list **stack);
+void	rot(t_list **stack);
 
 #endif
