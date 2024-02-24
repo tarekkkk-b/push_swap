@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:22:32 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/23 16:53:23 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/24 14:51:18 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 void	revrot(t_list **stack)
 {
 	t_list	*temp;
-	t_list	*iter = (*stack);
-	
+	t_list	*iter;
+
+	iter = (*stack);
 	temp = ft_lstlast(*stack);
 	ft_lstadd_front(stack, ft_lstnew(temp->content));
 	while (iter->next != temp)
@@ -25,20 +26,27 @@ void	revrot(t_list **stack)
 	free (temp);
 }
 
-// t_list	rra(t_list **stack_a)
-// {
-	
-// }
+void	rra(t_list **stack_a, int flag)
+{
+	revrot(stack_a);
+	if (flag == 1)
+		write (1, "rra\n", 4);
+}
 
-// t_list	rrb(t_list **stack_b)
-// {
-	
-// }
+void	rrb(t_list **stack_b, int flag)
+{
+	revrot(stack_b);
+	if (flag == 1)
+		write (1, "rrb\n", 4);
+}
 
-// t_list	rrr(t_list **stack_a, t_list **stack_b)
-// {
-	
-// }
+void	rrr(t_list **stack_a, t_list **stack_b, int flag)
+{
+	revrot(stack_a);
+	revrot(stack_b);
+	if (flag == 1)
+		write (1, "rrr\n", 4);
+}
 
 
 //rra -> Shift down all elements of stack a by 1. The last element becomes the first one.

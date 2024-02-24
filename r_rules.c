@@ -6,12 +6,11 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:15:23 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/23 19:07:01 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/24 14:50:21 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	rot(t_list **stack)
 {
@@ -32,23 +31,29 @@ void	rot(t_list **stack)
 	// while (*stack)
 	// 	(*stack) = (*stack)->next;
 }
-// t_list	ra(t_list **stack_a)
-// {
-	
-// }
 
-// t_list	rb(t_list **stack_b)
-// {
-	
-// }
+void	ra(t_list **stack_a, int flag)
+{
+	rot(stack_a);
+	if (flag == 1)
+		write (1, "ra\n", 3);
+}
 
-// t_list	rr(t_list **stack_a, t_list **stack_b)
-// {
-	
-// }
+void	rb(t_list **stack_b, int flag)
+{
+	rot(stack_b);
+	if (flag == 1)
+		write (1, "rb\n", 3);
+}
 
+void	rr(t_list **stack_a, t_list **stack_b, int flag)
+{
+	rot(stack_a);
+	rot(stack_b);
+	if (flag == 1)
+		write (1, "rr\n", 3);
+}
 
 // ra -> Shift up all elements of stack a by 1. The first element becomes the last one.
 // rb -> Shift up all elements of stack b by 1. The first element becomes the last one.
-
 // rr : ra and rb at the same time.

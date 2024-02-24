@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/23 19:14:13 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/24 14:48:41 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static t_list	*stackmaker(int *intarr, int list_size, t_list *node)
 {
 	int		i;
 	t_list	*new;
-	
+
 	i = 0;
 	while (i < list_size)
 	{
@@ -62,9 +62,10 @@ static t_list	*stackmaker(int *intarr, int list_size, t_list *node)
 int	main(int ac, char **av)
 {
 	int		*intarr;
-	int 	list_size;
+	int		list_size;
 	t_list	*stack_a;
 	t_list	*stack_b;
+
 	list_size = 0;
 	stack_a = NULL;
 	if (ac < 2)

@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:03 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/23 18:34:06 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:00:57 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ typedef struct s_list
 //					functions						//
 //##################################################//
 
+
+//                 list functions                 //
+
+
 t_list	*ft_lstnew(int content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstlast(t_list *lst);
@@ -60,26 +64,44 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void	*));
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-void	exiting(void *intarr, char **sp_inp);
-long	ft_atoi(const char *sp_inp_i, int *intarr, char **sp_inp);
-char	**ft_split(char const *input, char sep);
-char	**freeing(char **split);
-char	*ft_strjoin(char *input, char *argv);
-char	*join_args(char *input, char **av, int ac);
-char	*ft_strdup(char *argv);
 int		ft_lstsize(t_list *lst);
-int		ft_isspace(char	*av);
+
+//               libft functions               //
+
+char	**ft_split(char const *input, char sep);
+char	*ft_strjoin(char *input, char *argv);
+char	*ft_strdup(char *argv);
+long	ft_atoi(const char *sp_inp_i, int *intarr, char **sp_inp);
 int		ft_isdigit(int sp_inp);
+int		ft_isspace(char	*av);
 int		ft_strlen(const char *str);
-int		checker(int *intarr, int number, int count);
-int		inputcount(const char *input, char sep);
+
+//               utils functions               //
+
+char	**freeing(char **split);
+char	*join_args(char *input, char **av, int ac);
 int		*input_handling(char **av, int ac, int *i);
 int		*parser(char **sp_inp, int numbercount, int *i2);
+void	exiting(void *intarr, char **sp_inp);
+int		checker(int *intarr, int number, int count);
+int		inputcount(const char *input, char sep);
+
+//               rules functions               //
+
 void	push(t_list	**stack1, t_list **stack2);
-void	swap(t_list **stack);
 void	pa(t_list **stack_a, t_list **stack_b, int flag);
 void	pb(t_list **stack_a, t_list **stack_b, int flag);
+void	swap(t_list **stack);
+void	sa(t_list **stack_a, int flag);
+void	sb(t_list **stack_b, int flag);
+void	ss(t_list **stack_a, t_list **stack_b, int flag);
 void	revrot(t_list **stack);
+void	rra(t_list **stack_a, int flag);
+void	rrb(t_list **stack_b, int flag);
+void	rrr(t_list **stack_a, t_list **stack_b, int flag);
 void	rot(t_list **stack);
+void	ra(t_list **stack_a, int flag);
+void	rb(t_list **stack_b, int flag);
+void	rr(t_list **stack_a, t_list **stack_b, int flag);
 
 #endif

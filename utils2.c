@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:44 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/05 18:42:02 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/24 14:52:41 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char	*join_args(char *input, char **av, int ac)
 	}
 	return (input);
 }
+
 void	exiting(void *intarr, char **sp_inp)
 {
 	if (intarr)
@@ -59,4 +60,4 @@ void	exiting(void *intarr, char **sp_inp)
 		freeing(sp_inp);
 	write (2, "Error\n", 6);
 	exit(1);
-}	
+}

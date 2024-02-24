@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:23 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/21 18:31:20 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/02/24 14:56:39 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	push(t_list	**stack1, t_list **stack2)
 {
 	t_list	*temp;
+
 	temp = (*stack1);
 	*stack1 = (*stack1)->next;
 	ft_lstadd_front(stack2, ft_lstnew(temp->content));
 	free (temp);
 	// int		integer;
-	
 	// integer = (*stack1)->content;
 	// temp = *stack1;
 	// *stack1 = (*stack1)->next;
@@ -47,6 +47,4 @@ void	pb(t_list **stack_a, t_list **stack_b, int flag)
 		//Do nothing if b is empty.
 //pb -> Take the first element at the top of a and put it at the top of b.
 		//Do nothing if a is empty.
-
-
 //have it toggable between print and no print
