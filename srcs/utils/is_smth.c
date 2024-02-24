@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   is_smth.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 15:44:16 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/18 17:23:35 by tabadawi         ###   ########.fr       */
+/*   Created: 2024/01/31 16:24:33 by tabadawi          #+#    #+#             */
+/*   Updated: 2024/02/05 20:30:24 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../push_swap.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+int	ft_isspace(char	*av)
 {
-	(void)del;
-	if (del != NULL)
+	int	i;
+
+	i = 0;
+	while (av[i])
 	{
-		if (lst)
-		{
-			free(lst);
-		}
+		if (av[i] != ' ')
+			return (0);
+		i++;
 	}
+	return (1);
+}
+
+int	ft_isdigit(int sp_inp)
+{
+	if (sp_inp >= '0' && sp_inp <= '9')
+		return (1);
+	return (0);
 }

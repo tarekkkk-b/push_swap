@@ -52,9 +52,7 @@ typedef struct s_list
 //					functions						//
 //##################################################//
 
-
 //                 list functions                 //
-
 
 t_list	*ft_lstnew(int content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));

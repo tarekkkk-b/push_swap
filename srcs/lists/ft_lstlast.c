@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 15:43:28 by tabadawi          #+#    #+#             */
-/*   Updated: 2023/11/28 14:13:40 by tabadawi         ###   ########.fr       */
+/*   Created: 2023/11/21 15:43:12 by tabadawi          #+#    #+#             */
+/*   Updated: 2023/12/04 13:28:53 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*lastone;
-
-	if (lst)
+	while (lst)
 	{
-		if (*lst)
-		{
-			lastone = ft_lstlast(*lst);
-			lastone->next = new;
-		}
-		else
-			*lst = new;
+		if (!lst->next)
+			return (lst);
+		lst = lst->next;
 	}
+	return (lst);
 }

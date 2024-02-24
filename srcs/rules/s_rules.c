@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../push_swap.h"
 
 void	swap(t_list **stack)
 {
@@ -39,22 +39,22 @@ void	swap(t_list **stack)
 
 void	sa(t_list **stack_a, int flag)
 {
-	swap(&stack_a);
+	swap(stack_a);
 	if (flag == 1)
 		write (1, "sa\n", 1);
 }
 
 void	sb(t_list **stack_b, int flag)
 {
-	swap(&stack_b);
+	swap(stack_b);
 	if (flag == 1)
 		write (1, "sb\n", 1);
 }
 
 void	ss(t_list **stack_a, t_list **stack_b, int flag)
 {
-	swap(&stack_a);
-	swap(&stack_b);
+	swap(stack_a);
+	swap(stack_b);
 	if (flag == 1)
 		write (1, "ss\n", 1);
 }
