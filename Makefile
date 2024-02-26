@@ -31,6 +31,7 @@ SRC	=	utils/ft_atoi.c \
 		lists/ft_lstclear.c \
 		lists/ft_lstdelone.c \
 		lists/ft_lstadd_front.c \
+		lists/ft_lstsize.c \
 		rules/p_rules.c \
 		rules/s_rules.c \
 		rules/rr_rules.c \

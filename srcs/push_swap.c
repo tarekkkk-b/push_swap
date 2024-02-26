@@ -59,6 +59,19 @@ static t_list	*stackmaker(int *intarr, int list_size, t_list *node)
 	return (free (intarr), node);
 }
 
+static int	stackissorted(t_list **stack)
+{
+	t_list *iter = (*stack);
+	while ((iter)->next)
+	{
+		if (iter->content < iter->next->content)
+			iter = iter->next;
+		else
+			return (1);
+	}
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	int		*intarr;
@@ -163,7 +176,70 @@ int	main(int ac, char **av)
 	// 	temp = temp->next;
 	// }
 	// printf ("\n");
+
+	//multi rule test
+
+	// 	stack_b = NULL;
+	// 	t_list *temp = stack_a;
+	// 	printf("before\n\n");
+	// 	printf("STACK A: ");
+	// 	while (temp)
+	// 	{
+	// 		printf ("%d ", temp->content);
+	// 		temp = temp->next;
+	// 	}
+	// 	printf("\nSTACK B: ");
+	// 	printf("\n\nafter push\n\n");
+	// 	while (ft_lstsize(`) > 3)
+	// 		push(&stack_a, &stack_b);
+	// 	temp = stack_a;
+	// 	printf("STACK A: ");
+	// 	while (temp)
+	// 	{
+	// 		printf ("%d ", temp->content);
+	// 		temp = temp->next;
+	// 	}
+	// 	temp = stack_b;
+	// 	printf("\nSTACK B: ");
+	// 	while (temp)
+	// 	{
+	// 		printf ("%d ", temp->content);
+	// 		temp = temp->next;
+	// 	}
+	// 	printf("\n\nafter swap\n\n");
+	// 	swap(&stack_a);
+	// 	swap(&stack_b);
+	// 	temp = stack_a;
+	// 	printf("STACK A: ");
+	// 	while (temp)
+	// 	{
+	// 		printf ("%d ", temp->content);
+	// 		temp = temp->next;
+	// 	}
+	// 	temp = stack_b;
+	// 	printf("\nSTACK B: ");
+	// 	while (temp)
+	// 	{
+	// 		printf ("%d ", temp->content);
+	// 		temp = temp->next;
+	// 	}
+	// 	printf("\n");
+
+	//is sorted ? test
 	
+	// if (stackissorted(&stack_a) == 1)
+	// {
+	// 	printf ("not sorted\n");
+	// 	ft_lstclear(&stack_a, free);
+	// 	exit (0);
+	// }
+	// else if ((stackissorted(&stack_a) == 0))
+	// {
+	// 	printf("sorted\n");
+	// 	ft_lstclear(&stack_a, free);
+	// 	exit (0);
+	// }
+
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);
 	return (0);
