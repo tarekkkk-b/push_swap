@@ -72,12 +72,40 @@ static int	stackissorted(t_list **stack)
 	return (0);
 }
 
+static t_list	*findmax(t_list **stack)
+{
+	t_list	*max;
+	t_list	*temp = (*stack);
+	max = temp;
+	while (temp)
+	{
+		if (temp->content > max->content)
+			max = temp;
+		temp = temp->next;
+	}
+	return (max);
+}
+
+static t_list	*findmin(t_list **stack)
+{
+	t_list	*min;
+	t_list	*temp = (*stack);
+	min = temp;
+	while (temp)
+	{
+		if (temp->content < min->content)
+			min = temp;
+		temp = temp->next;
+	}
+	return (min);
+}
+
 int	main(int ac, char **av)
 {
 	int		*intarr;
 	int		list_size;
 	t_list	*stack_a;
-	t_list	*stack_b;
+	// t_list	*stack_b;
 
 	list_size = 0;
 	stack_a = NULL;
@@ -240,8 +268,20 @@ int	main(int ac, char **av)
 	// 	exit (0);
 	// }
 
-	ft_lstclear(&stack_a, free);
-	ft_lstclear(&stack_b, free);
+	//max test
+
+	// t_list *max = findmax(&stack_a);
+	// printf("%d\n", max->content);
+	// ft_lstclear(&max, free);
+
+	//min test
+
+	// t_list *min = findmin(&stack_a);
+	// printf("%d\n", min->content);
+	// ft_lstclear(&min, free);
+
+	// ft_lstclear(&stack_a, free);
+	// ft_lstclear(&stack_b, free);
 	return (0);
 }
 
