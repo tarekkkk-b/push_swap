@@ -41,14 +41,14 @@ void	sa(t_list **stack_a, int flag)
 {
 	swap(stack_a);
 	if (flag == 1)
-		write (1, "sa\n", 1);
+		write (1, "sa\n", 3);
 }
 
 void	sb(t_list **stack_b, int flag)
 {
 	swap(stack_b);
 	if (flag == 1)
-		write (1, "sb\n", 1);
+		write (1, "sb\n", 3);
 }
 
 void	ss(t_list **stack_a, t_list **stack_b, int flag)
@@ -56,7 +56,7 @@ void	ss(t_list **stack_a, t_list **stack_b, int flag)
 	swap(stack_a);
 	swap(stack_b);
 	if (flag == 1)
-		write (1, "ss\n", 1);
+		write (1, "ss\n", 4);
 }
 
 //sa -> Swap the first 2 elements at the top of stack a.

@@ -100,6 +100,19 @@ static t_list	*findmin(t_list **stack)
 	return (min);
 }
 
+static void	sortthree(t_list **stack)
+{
+	t_list	*max;
+
+	max = findmax(stack);
+	if ((*stack)->content == max->content)
+		ra(stack, 1);
+	else if ((*stack)->next->content == max->content)
+		rra(stack, 1);
+	if (stackissorted(stack) == 1)
+		sa(stack, 1);
+}
+
 int	main(int ac, char **av)
 {
 	int		*intarr;
@@ -280,8 +293,27 @@ int	main(int ac, char **av)
 	// printf("%d\n", min->content);
 	// ft_lstclear(&min, free);
 
-	// ft_lstclear(&stack_a, free);
 	// ft_lstclear(&stack_b, free);
+
+	//sort three test
+
+	t_list	*temp = stack_a;
+	printf("STACK A: ");
+	while (temp)
+	{
+		printf ("%d ", temp->content);
+		temp = temp->next;
+	}
+	if (stackissorted(&stack_a) == 1)
+		sortthree(&stack_a);
+	temp = stack_a;
+	printf("\n\n\nSORTED STACK A: ");
+	while (temp)
+	{
+		printf ("%d ", temp->content);
+		temp = temp->next;
+	}
+	ft_lstclear(&stack_a, free);
 	return (0);
 }
 
