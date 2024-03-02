@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/24 14:48:41 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/02 12:15:15 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,32 +59,34 @@ static t_list	*stackmaker(int *intarr, int list_size, t_list *node)
 	return (free (intarr), node);
 }
 
-static int	stackissorted(t_list **stack)
-{
-	t_list *iter = (*stack);
-	while ((iter)->next)
-	{
-		if (iter->content < iter->next->content)
-			iter = iter->next;
-		else
-			return (1);
-	}
-	return (0);
-}
+// static int	stackissorted(t_list **stack)
+// {
+// 	t_list *iter = (*stack);
+// 	while ((iter)->next)
+// 	{
+// 		if (iter->content < iter->next->content)
+// 			iter = iter->next;
+// 		else
+// 			return (1);
+// 	}
+// 	return (0);
+// }
 
-static t_list	*findmax(t_list **stack)
-{
-	t_list	*max;
-	t_list	*temp = (*stack);
-	max = temp;
-	while (temp)
-	{
-		if (temp->content > max->content)
-			max = temp;
-		temp = temp->next;
-	}
-	return (max);
-}
+// static t_list	*findmax(t_list **stack)
+// {
+// 	t_list	*max;
+// 	t_list	*temp;
+
+// 	temp = (*stack);
+// 	max = temp;
+// 	while (temp)
+// 	{
+// 		if (temp->content > max->content)
+// 			max = temp;
+// 		temp = temp->next;
+// 	}
+// 	return (max);
+// }
 
 static t_list	*findmin(t_list **stack)
 {
@@ -100,17 +102,67 @@ static t_list	*findmin(t_list **stack)
 	return (min);
 }
 
-static void	sortthree(t_list **stack)
+// static void	sortthree(t_list **stack)
+// {
+// 	t_list	*max;
+
+// 	max = findmax(stack);
+// 	if ((*stack)->content == max->content)
+// 		ra(stack, 1);
+// 	else if ((*stack)->next->content == max->content)
+// 		rra(stack, 1);
+// 	if (stackissorted(stack) == 1)
+// 		sa(stack, 1);
+// }
+
+static int	findmaxindex(t_list **stack)
 {
 	t_list	*max;
+	t_list	*temp;
+	int	i;
+	int	save;
 
-	max = findmax(stack);
-	if ((*stack)->content == max->content)
-		ra(stack, 1);
-	else if ((*stack)->next->content == max->content)
-		rra(stack, 1);
-	if (stackissorted(stack) == 1)
-		sa(stack, 1);
+	i = 0;
+	save = 0;
+	temp = (*stack);
+	max = temp;
+	while (temp)
+	{
+		if (temp->content > max->content)
+		{
+			max = temp;
+			save = i;
+		}
+		i++;
+		temp = temp->next;
+	}
+	return (save);
+}
+
+static int	findindex(int content, t_list **stack)
+{
+	int	i;
+	t_list	*temp;
+	t_list	*max;
+	int	save;
+
+	save = -1;
+	i = 0;
+	temp = (*stack);
+	max = findmin(stack);
+	while (temp)
+	{
+		if (temp->content >= max->content && content > temp->content)
+		{
+			max = temp;
+			save = i;
+		}
+		temp = temp->next;
+		i++;
+	}
+	if (save == -1)
+		return (findmaxindex(stack));
+	return (save);
 }
 
 int	main(int ac, char **av)
@@ -118,7 +170,7 @@ int	main(int ac, char **av)
 	int		*intarr;
 	int		list_size;
 	t_list	*stack_a;
-	// t_list	*stack_b;
+	t_list	*stack_b = NULL;
 
 	list_size = 0;
 	stack_a = NULL;
@@ -293,27 +345,58 @@ int	main(int ac, char **av)
 	// printf("%d\n", min->content);
 	// ft_lstclear(&min, free);
 
-	// ft_lstclear(&stack_b, free);
-
 	//sort three test
 
-	t_list	*temp = stack_a;
-	printf("STACK A: ");
-	while (temp)
-	{
-		printf ("%d ", temp->content);
-		temp = temp->next;
-	}
-	if (stackissorted(&stack_a) == 1)
-		sortthree(&stack_a);
-	temp = stack_a;
-	printf("\n\n\nSORTED STACK A: ");
-	while (temp)
-	{
-		printf ("%d ", temp->content);
-		temp = temp->next;
-	}
-	ft_lstclear(&stack_a, free);
+	// t_list	*temp = stack_a;
+	// printf("STACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// if (stackissorted(&stack_a) == 1)
+	// 	sortthree(&stack_a);
+	// temp = stack_a;
+	// printf("\n\n\nSORTED STACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+
+	//index finder test
+
+	// t_list	*temp = stack_a;
+	// printf("STACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf("\nSTACK B: ");
+	// while (ft_lstsize(stack_a) > 6)
+	// 	push(&stack_a, &stack_b);
+	// rot(&stack_b);
+	// rot(&stack_b);
+	// rot(&stack_b);
+	// temp = stack_a;
+	// printf("\n\n\nSTACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("\n%d and target from STACK B is at index %d\n", temp->content, findindex(temp->content, &stack_b));
+	// 	temp = temp->next;
+	// }
+	// temp = stack_b;
+	// printf("\nSTACK B: \n");
+	// while (temp)
+	// {
+	// 	printf ("%d\n", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf("\n");
+	
+	// ft_lstclear(&stack_a, free);
+	// ft_lstclear(&stack_b, free);
 	return (0);
 }
 
