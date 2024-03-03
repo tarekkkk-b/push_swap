@@ -6,11 +6,24 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/02 12:15:15 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:01:38 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+static void	indexer(t_list **stack)
+{
+	int	index = 0;
+	t_list *temp;
+	temp = (*stack);
+
+	while (temp)
+	{
+		temp->i = index++;
+		temp = temp->next;
+	}
+}
 
 /// @brief handles input
 /// @param av arguments
@@ -56,50 +69,8 @@ static t_list	*stackmaker(int *intarr, int list_size, t_list *node)
 		ft_lstadd_back(&node, new);
 		i++;
 	}
+	indexer(&node);
 	return (free (intarr), node);
-}
-
-// static int	stackissorted(t_list **stack)
-// {
-// 	t_list *iter = (*stack);
-// 	while ((iter)->next)
-// 	{
-// 		if (iter->content < iter->next->content)
-// 			iter = iter->next;
-// 		else
-// 			return (1);
-// 	}
-// 	return (0);
-// }
-
-// static t_list	*findmax(t_list **stack)
-// {
-// 	t_list	*max;
-// 	t_list	*temp;
-
-// 	temp = (*stack);
-// 	max = temp;
-// 	while (temp)
-// 	{
-// 		if (temp->content > max->content)
-// 			max = temp;
-// 		temp = temp->next;
-// 	}
-// 	return (max);
-// }
-
-static t_list	*findmin(t_list **stack)
-{
-	t_list	*min;
-	t_list	*temp = (*stack);
-	min = temp;
-	while (temp)
-	{
-		if (temp->content < min->content)
-			min = temp;
-		temp = temp->next;
-	}
-	return (min);
 }
 
 // static void	sortthree(t_list **stack)
@@ -115,55 +86,47 @@ static t_list	*findmin(t_list **stack)
 // 		sa(stack, 1);
 // }
 
-static int	findmaxindex(t_list **stack)
+
+// static int	nodeindex(t_list **stack, int content)
+// {
+// 	int	i;
+// 	t_list *temp = (*stack);
+
+// 	i = 0;
+// 	while (temp->content != content)
+// 	{
+// 		i++;
+// 		temp = temp->next;
+// 	}
+// 	return (i);
+// }
+
+static t_list *nodeatindex(int index, t_list **stack)
 {
-	t_list	*max;
-	t_list	*temp;
-	int	i;
-	int	save;
+	t_list *iter;
+	int		i;
 
 	i = 0;
-	save = 0;
-	temp = (*stack);
-	max = temp;
-	while (temp)
+	iter = (*stack);
+	while (i < index)
 	{
-		if (temp->content > max->content)
-		{
-			max = temp;
-			save = i;
-		}
-		i++;
-		temp = temp->next;
+		iter = iter->next;
+		i++;	
 	}
-	return (save);
+	return (iter);
 }
 
-static int	findindex(int content, t_list **stack)
+static void onecostcalc(t_list **stack1, t_list **stack2)
 {
-	int	i;
-	t_list	*temp;
-	t_list	*max;
-	int	save;
-
-	save = -1;
-	i = 0;
-	temp = (*stack);
-	max = findmin(stack);
-	while (temp)
-	{
-		if (temp->content >= max->content && content > temp->content)
-		{
-			max = temp;
-			save = i;
-		}
-		temp = temp->next;
-		i++;
-	}
-	if (save == -1)
-		return (findmaxindex(stack));
-	return (save);
+	t_cheap	cost;
+	cost.src = (*stack1);
+	cost.srcindex = (*stack1)->i;
+	cost.targetindex = findindex((*stack1)->content, stack2);
+	cost.target = nodeatindex(cost.targetindex, stack2);
+	printf("src :    %d   @   index : %d\n", cost.src->content, cost.srcindex);
+	printf("target : %d   @   index : %d\n", cost.target->content, cost.targetindex);
 }
+
 
 int	main(int ac, char **av)
 {
@@ -183,220 +146,8 @@ int	main(int ac, char **av)
 		exit (0);
 	}
 	stack_a = stackmaker(intarr, list_size, stack_a);
-	// push test
-
-	// t_list	*temp = stack_a;
-	// printf("STACK A: ");
-	// while (temp)
-	// {
-	// 	printf ("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-	// while (stack_a->next)
-	// 	push(&stack_a, &stack_b);
-	// temp = stack_a;
-	// printf("\nSTACK B: ");
-	// printf("\n\n\nSTACK A: ");
-	// while (temp)
-	// {
-	// 	printf ("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-	// temp = stack_b;
-	// printf("\nSTACK B: ");
-	// while (temp)
-	// {
-	// 	printf ("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-	// printf("\n");
-
-	// swap test
-
-	// t_list	*temp = stack_a;
-	// printf("BEFORE: ");
-	// while (temp)
-	// {
-	// 	printf("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-	// swap (&stack_a);
-	// temp = stack_a;
-	// printf("\n\nAFTER: ");
-	// while (temp)
-	// {
-	// 	printf("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-	// printf ("\n");
-
-	//rev rot test
-
-	// t_list	*temp = stack_a;
-	// printf("BEFORE: ");
-	// while (temp)
-	// {
-	// 	printf("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-	// revrot (&stack_a);
-	// temp = stack_a;
-	// printf("\n\nAFTER: ");
-	// while (temp)
-	// {
-	// 	printf("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-	// printf ("\n");
-	
-	// ft_lstclear(&stack_a, free);
-
-	//rot test
-
-	// t_list	*temp = stack_a;
-	// printf("BEFORE: ");
-	// while (temp)
-	// {
-	// 	printf("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-	// rot (&stack_a);
-	// temp = stack_a;
-	// printf("\n\nAFTER: ");
-	// while (temp)
-	// {
-	// 	printf("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-	// printf ("\n");
-
-	//multi rule test
-
-	// 	stack_b = NULL;
-	// 	t_list *temp = stack_a;
-	// 	printf("before\n\n");
-	// 	printf("STACK A: ");
-	// 	while (temp)
-	// 	{
-	// 		printf ("%d ", temp->content);
-	// 		temp = temp->next;
-	// 	}
-	// 	printf("\nSTACK B: ");
-	// 	printf("\n\nafter push\n\n");
-	// 	while (ft_lstsize(`) > 3)
-	// 		push(&stack_a, &stack_b);
-	// 	temp = stack_a;
-	// 	printf("STACK A: ");
-	// 	while (temp)
-	// 	{
-	// 		printf ("%d ", temp->content);
-	// 		temp = temp->next;
-	// 	}
-	// 	temp = stack_b;
-	// 	printf("\nSTACK B: ");
-	// 	while (temp)
-	// 	{
-	// 		printf ("%d ", temp->content);
-	// 		temp = temp->next;
-	// 	}
-	// 	printf("\n\nafter swap\n\n");
-	// 	swap(&stack_a);
-	// 	swap(&stack_b);
-	// 	temp = stack_a;
-	// 	printf("STACK A: ");
-	// 	while (temp)
-	// 	{
-	// 		printf ("%d ", temp->content);
-	// 		temp = temp->next;
-	// 	}
-	// 	temp = stack_b;
-	// 	printf("\nSTACK B: ");
-	// 	while (temp)
-	// 	{
-	// 		printf ("%d ", temp->content);
-	// 		temp = temp->next;
-	// 	}
-	// 	printf("\n");
-
-	//is sorted ? test
-	
-	// if (stackissorted(&stack_a) == 1)
-	// {
-	// 	printf ("not sorted\n");
-	// 	ft_lstclear(&stack_a, free);
-	// 	exit (0);
-	// }
-	// else if ((stackissorted(&stack_a) == 0))
-	// {
-	// 	printf("sorted\n");
-	// 	ft_lstclear(&stack_a, free);
-	// 	exit (0);
-	// }
-
-	//max test
-
-	// t_list *max = findmax(&stack_a);
-	// printf("%d\n", max->content);
-	// ft_lstclear(&max, free);
-
-	//min test
-
-	// t_list *min = findmin(&stack_a);
-	// printf("%d\n", min->content);
-	// ft_lstclear(&min, free);
-
-	//sort three test
-
-	// t_list	*temp = stack_a;
-	// printf("STACK A: ");
-	// while (temp)
-	// {
-	// 	printf ("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-	// if (stackissorted(&stack_a) == 1)
-	// 	sortthree(&stack_a);
-	// temp = stack_a;
-	// printf("\n\n\nSORTED STACK A: ");
-	// while (temp)
-	// {
-	// 	printf ("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-
-	//index finder test
-
-	// t_list	*temp = stack_a;
-	// printf("STACK A: ");
-	// while (temp)
-	// {
-	// 	printf ("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-	// printf("\nSTACK B: ");
-	// while (ft_lstsize(stack_a) > 6)
-	// 	push(&stack_a, &stack_b);
-	// rot(&stack_b);
-	// rot(&stack_b);
-	// rot(&stack_b);
-	// temp = stack_a;
-	// printf("\n\n\nSTACK A: ");
-	// while (temp)
-	// {
-	// 	printf ("\n%d and target from STACK B is at index %d\n", temp->content, findindex(temp->content, &stack_b));
-	// 	temp = temp->next;
-	// }
-	// temp = stack_b;
-	// printf("\nSTACK B: \n");
-	// while (temp)
-	// {
-	// 	printf ("%d\n", temp->content);
-	// 	temp = temp->next;
-	// }
-	// printf("\n");
-	
-	// ft_lstclear(&stack_a, free);
-	// ft_lstclear(&stack_b, free);
+	ft_lstclear(&stack_a, free);
+	ft_lstclear(&stack_b, free);
 	return (0);
 }
 
@@ -413,11 +164,30 @@ int	main(int ac, char **av)
 
 
 ///19feb
-//create rules functions
-	//push, swap, rot and rev rot
-	//freeing function for temp pointers used
-	//realize patterns
-//sort three
+// create rules functions
+	// push, swap, rot and rev rot
+	// freeing function for temp pointers used
+	//r ealize patterns
+// sort three
 
 //20 feb
-//time and space complexity look into
+// time and space complexity look into
+
+//3 march
+// lots of updates
+	// rules created
+	// find max and min created
+	// sort three created
+	// i now store the index in the struct of the node
+	// i also find the target node
+	// i save the info in a new struct
+		// basically saves
+			// src, src index, target, and target index
+// next step would be calculating the cost for each node and going for the cheapest
+	// set the cheapest as the first info then iterate through stack to compare
+	// soon as we find a cheaper move we set it as cheapest
+	// execute then recalculate and comapare
+// we will be sorting stack_b as we go this way, but to push back we need to do this process in reverse
+// i believe nodeindex is no longer needed, keep it incase.
+
+

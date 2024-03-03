@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:03 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/24 15:00:57 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/03 21:25:56 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,17 @@ typedef struct s_input
 typedef struct s_list
 {
 	int				content;
+	int				i;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_cheap
+{
+	int		srcindex;
+	int		targetindex;
+	t_list	*src;
+	t_list	*target;
+}	t_cheap;
 
 //###################################################//
 //					functions						//
@@ -55,9 +64,7 @@ typedef struct s_list
 //                 list functions                 //
 
 t_list	*ft_lstnew(int content);
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstlast(t_list *lst);
-void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void	*));
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -101,5 +108,13 @@ void	rot(t_list **stack);
 void	ra(t_list **stack_a, int flag);
 void	rb(t_list **stack_b, int flag);
 void	rr(t_list **stack_a, t_list **stack_b, int flag);
+
+//                 stack utils                //
+
+int	stackissorted(t_list **stack);
+int	findindex(int content, t_list **stack);
+int	findmaxindex(t_list **stack);
+t_list	*findmax(t_list **stack);
+t_list	*findmin(t_list **stack);
 
 #endif

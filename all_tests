@@ -1,0 +1,279 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   all_tests                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/03 13:58:54 by tabadawi          #+#    #+#             */
+/*   Updated: 2024/03/03 21:43:54 by tabadawi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+// push test
+
+	// t_list	*temp = stack_a;
+	// printf("STACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// while (stack_a->next)
+	// 	push(&stack_a, &stack_b);
+	// temp = stack_a;
+	// printf("\nSTACK B: ");
+	// printf("\n\n\nSTACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// temp = stack_b;
+	// printf("\nSTACK B: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf("\n");
+
+	// swap test
+
+	// t_list	*temp = stack_a;
+	// printf("BEFORE: ");
+	// while (temp)
+	// {
+	// 	printf("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// swap (&stack_a);
+	// temp = stack_a;
+	// printf("\n\nAFTER: ");
+	// while (temp)
+	// {
+	// 	printf("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf ("\n");
+
+	//rev rot test
+
+	// t_list	*temp = stack_a;
+	// printf("BEFORE: ");
+	// while (temp)
+	// {
+	// 	printf("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// revrot (&stack_a);
+	// temp = stack_a;
+	// printf("\n\nAFTER: ");
+	// while (temp)
+	// {
+	// 	printf("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf ("\n");
+	
+	// ft_lstclear(&stack_a, free);
+
+	//rot test
+
+	// t_list	*temp = stack_a;
+	// printf("BEFORE: ");
+	// while (temp)
+	// {
+	// 	printf("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// rot (&stack_a);
+	// temp = stack_a;
+	// printf("\n\nAFTER: ");
+	// while (temp)
+	// {
+	// 	printf("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf ("\n");
+
+	//multi rule test
+
+	// 	stack_b = NULL;
+	// 	t_list *temp = stack_a;
+	// 	printf("before\n\n");
+	// 	printf("STACK A: ");
+	// 	while (temp)
+	// 	{
+	// 		printf ("%d ", temp->content);
+	// 		temp = temp->next;
+	// 	}
+	// 	printf("\nSTACK B: ");
+	// 	printf("\n\nafter push\n\n");
+	// 	while (ft_lstsize(`) > 3)
+	// 		push(&stack_a, &stack_b);
+	// 	temp = stack_a;
+	// 	printf("STACK A: ");
+	// 	while (temp)
+	// 	{
+	// 		printf ("%d ", temp->content);
+	// 		temp = temp->next;
+	// 	}
+	// 	temp = stack_b;
+	// 	printf("\nSTACK B: ");
+	// 	while (temp)
+	// 	{
+	// 		printf ("%d ", temp->content);
+	// 		temp = temp->next;
+	// 	}
+	// 	printf("\n\nafter swap\n\n");
+	// 	swap(&stack_a);
+	// 	swap(&stack_b);
+	// 	temp = stack_a;
+	// 	printf("STACK A: ");
+	// 	while (temp)
+	// 	{
+	// 		printf ("%d ", temp->content);
+	// 		temp = temp->next;
+	// 	}
+	// 	temp = stack_b;
+	// 	printf("\nSTACK B: ");
+	// 	while (temp)
+	// 	{
+	// 		printf ("%d ", temp->content);
+	// 		temp = temp->next;
+	// 	}
+	// 	printf("\n");
+
+	//is sorted ? test
+	
+	// if (stackissorted(&stack_a) == 1)
+	// {
+	// 	printf ("not sorted\n");
+	// 	ft_lstclear(&stack_a, free);
+	// 	exit (0);
+	// }
+	// else if ((stackissorted(&stack_a) == 0))
+	// {
+	// 	printf("sorted\n");
+	// 	ft_lstclear(&stack_a, free);
+	// 	exit (0);
+	// }
+
+	//max test
+
+	// t_list *max = findmax(&stack_a);
+	// printf("%d\n", max->content);
+
+	//min test
+
+	// t_list *min = findmin(&stack_a);
+	// printf("%d\n", min->content);
+
+	//sort three test
+
+	// t_list	*temp = stack_a;
+	// printf("STACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// if (stackissorted(&stack_a) == 1)
+	// 	sortthree(&stack_a);
+	// temp = stack_a;
+	// printf("\n\n\nSORTED STACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+
+	//index finder test
+
+	// t_list	*temp = stack_a;
+	// printf("STACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf("\nSTACK B: ");
+	// while (ft_lstsize(stack_a) > 6)
+	// 	push(&stack_a, &stack_b);
+	// rot(&stack_b);
+	// rot(&stack_b);
+	// rot(&stack_b);
+	// temp = stack_a;
+	// printf("\n\n\nSTACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("\n%d and target from STACK B is at index %d\n", temp->content, findindex(temp->content, &stack_b));
+	// 	temp = temp->next;
+	// }
+	// temp = stack_b;
+	// printf("\nSTACK B: \n");
+	// while (temp)
+	// {
+	// 	printf ("%d\n", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf("\n");
+
+	//nodeindex test
+
+	// t_cheap	cheapest;
+	// t_list	*temp = stack_a;
+	// while (temp)
+	// {
+	// 	cheapest.srcindex = nodeindex(&stack_a, temp->content);
+	// 	printf("number : %d          index : %d\n", temp->content, cheapest.srcindex);
+	// 	temp = temp->next;
+	// }
+
+	//struct node index test
+
+	// t_list	*temp = stack_a;
+	// printf("STACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("number : %d   @ index : %d\n", temp->content, temp->i);
+	// 	temp = temp->next;
+	// }
+
+	//reference test
+
+	// t_list	*temp = stack_a;
+	// printf("STACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// while (ft_lstsize(stack_a) > 5)
+	// 	push(&stack_a, &stack_b);
+	// temp = stack_a;
+	// printf("\nSTACK B: ");
+	// printf("\n\n\nSTACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// temp = stack_b;
+	// printf("\nSTACK B: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf("\n\n\n\n");
+	// indexer(&stack_a);
+	// indexer(&stack_b);
+	// temp = stack_a;
+	// while (temp)
+	// {
+	// 	onecostcalc(&temp, &stack_b);
+	// 	printf("\n\n");
+	// 	temp = temp->next;
+	// }
