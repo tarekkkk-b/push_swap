@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:15:55 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/03 21:25:50 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/04 10:34:09 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,24 @@ t_list	*findmin(t_list **stack)
 	return (min);
 }
 
-int	findindex(int content, t_list **stack)
+t_list	*findtarget(int content, t_list **stack)
 {
-	int	i;
 	t_list	*temp;
-	t_list	*max;
-	int	save;
+	t_list	*target;
+	t_list	*min;
 
-	save = -1;
-	i = 0;
+	min = findmin(stack);
+	if (content < min->content)
+		return (findmax(stack));
 	temp = (*stack);
-	max = findmin(stack);
+	target = findmin(stack);
 	while (temp)
 	{
-		if (temp->content >= max->content && content > temp->content)
-		{
-			max = temp;
-			save = i;
-		}
+		if (temp->content >= target->content && content > temp->content)
+			target = temp;
 		temp = temp->next;
-		i++;
 	}
-	if (save == -1)
-		return (findmaxindex(stack));
-	return (save);
+	return (target);
 }
 
 int	findmaxindex(t_list **stack)

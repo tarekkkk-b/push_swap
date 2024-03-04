@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/03 22:01:38 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/04 10:50:57 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,30 +101,32 @@ static t_list	*stackmaker(int *intarr, int list_size, t_list *node)
 // 	return (i);
 // }
 
-static t_list *nodeatindex(int index, t_list **stack)
-{
-	t_list *iter;
-	int		i;
+// static t_list *nodeatindex(int index, t_list **stack)
+// {
+// 	t_list *iter;
+// 	int		i;
 
-	i = 0;
-	iter = (*stack);
-	while (i < index)
-	{
-		iter = iter->next;
-		i++;	
-	}
-	return (iter);
-}
+// 	i = 0;
+// 	iter = (*stack);
+// 	while (i < index)
+// 	{
+// 		iter = iter->next;
+// 		i++;	
+// 	}
+// 	return (iter);
+// }
 
 static void onecostcalc(t_list **stack1, t_list **stack2)
 {
 	t_cheap	cost;
 	cost.src = (*stack1);
-	cost.srcindex = (*stack1)->i;
-	cost.targetindex = findindex((*stack1)->content, stack2);
-	cost.target = nodeatindex(cost.targetindex, stack2);
-	printf("src :    %d   @   index : %d\n", cost.src->content, cost.srcindex);
-	printf("target : %d   @   index : %d\n", cost.target->content, cost.targetindex);
+	cost.target = findtarget((*stack1)->content, stack2);
+	// cost.srcindex = (*stack1)->i;
+	// cost.targetindex = findindex((*stack1)->content, stack2);
+	// cost.target = nodeatindex(cost.targetindex, stack2);
+	// cost.targetindex = cost.target->i;
+	// printf("src :    %d   @   index : %d\n", cost.src->content, cost.src->i);
+	// printf("target : %d   @   index : %d\n", cost.target->content, cost.target->i);
 }
 
 
@@ -191,3 +193,10 @@ int	main(int ac, char **av)
 // i believe nodeindex is no longer needed, keep it incase.
 
 
+//4 march
+// cheap stack was reduced to only having the src and target nodes
+	// reason is now the nodes themselves are indexed
+	// this eleminates the need of the functions "nodeindex" and "nodeatindex"
+	// also findmaxindex is no longer needed
+	// "findindex" modified to "findtarget" (more accurate)
+	
