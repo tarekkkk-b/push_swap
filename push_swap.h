@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:03 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/04 10:31:37 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:29:36 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ typedef struct s_list
 
 typedef struct s_cheap
 {
-	t_list	*src;
-	t_list	*target;
+	t_list				*src;
+	t_list				*target;
+	unsigned int		cost;
+	int					flag;
 }	t_cheap;
 
 //###################################################//
@@ -109,8 +111,8 @@ void	rr(t_list **stack_a, t_list **stack_b, int flag);
 
 //                 stack utils                //
 
-int	stackissorted(t_list **stack);
-int	findmaxindex(t_list **stack);
+int		stackissorted(t_list **stack);
+void	sortthree(t_list **stack);
 t_list	*findtarget(int content, t_list **stack);
 t_list	*findmax(t_list **stack);
 t_list	*findmin(t_list **stack);

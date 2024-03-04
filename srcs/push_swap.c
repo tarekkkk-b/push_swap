@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/04 10:50:57 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:54:39 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 static void	indexer(t_list **stack)
 {
-	int	index = 0;
-	t_list *temp;
-	temp = (*stack);
+	int		index;
+	t_list	*temp;
 
+	index = 0;
+	temp = (*stack);
 	while (temp)
 	{
 		temp->i = index++;
@@ -25,11 +26,6 @@ static void	indexer(t_list **stack)
 	}
 }
 
-/// @brief handles input
-/// @param av arguments
-/// @param ac arg number
-/// @param list_size total numbers in list
-/// @return int array
 int	*input_handling(char **av, int ac, int *list_size)
 {
 	t_input	var;
@@ -73,62 +69,60 @@ static t_list	*stackmaker(int *intarr, int list_size, t_list *node)
 	return (free (intarr), node);
 }
 
-// static void	sortthree(t_list **stack)
-// {
-// 	t_list	*max;
-
-// 	max = findmax(stack);
-// 	if ((*stack)->content == max->content)
-// 		ra(stack, 1);
-// 	else if ((*stack)->next->content == max->content)
-// 		rra(stack, 1);
-// 	if (stackissorted(stack) == 1)
-// 		sa(stack, 1);
-// }
-
-
-// static int	nodeindex(t_list **stack, int content)
-// {
-// 	int	i;
-// 	t_list *temp = (*stack);
-
-// 	i = 0;
-// 	while (temp->content != content)
-// 	{
-// 		i++;
-// 		temp = temp->next;
-// 	}
-// 	return (i);
-// }
-
-// static t_list *nodeatindex(int index, t_list **stack)
-// {
-// 	t_list *iter;
-// 	int		i;
-
-// 	i = 0;
-// 	iter = (*stack);
-// 	while (i < index)
-// 	{
-// 		iter = iter->next;
-// 		i++;	
-// 	}
-// 	return (iter);
-// }
-
-static void onecostcalc(t_list **stack1, t_list **stack2)
+static int largerindex(int index1, int index2)
 {
-	t_cheap	cost;
-	cost.src = (*stack1);
-	cost.target = findtarget((*stack1)->content, stack2);
-	// cost.srcindex = (*stack1)->i;
-	// cost.targetindex = findindex((*stack1)->content, stack2);
-	// cost.target = nodeatindex(cost.targetindex, stack2);
-	// cost.targetindex = cost.target->i;
-	// printf("src :    %d   @   index : %d\n", cost.src->content, cost.src->i);
-	// printf("target : %d   @   index : %d\n", cost.target->content, cost.target->i);
+	int larger;
+	larger = 0;
+	
+	if (index1 > index2)
+		larger = index1;
+	else if (index2 > index1)
+		larger = index2;
+	return (larger);
 }
 
+static t_cheap	occ(t_list *node, t_list **stack1, t_list **stack2)
+{
+	t_cheap			info;
+	unsigned int	temp;
+
+	info.src = node;
+	info.target = findtarget(node->content, stack2);
+	info.cost = largerindex(info.src->i, info.target->i);
+	info.flag = 1;
+	temp = ft_lstsize((*stack2)) - info.target->i;
+	if (temp < info.cost)
+		info.cost = temp;
+	info.flag = 1 + (temp < info.cost);
+	temp = info.src->i + ft_lstsize((*stack2)) - info.target->i;
+	if (temp < info.cost)
+		info.cost = temp;
+	info.flag = info.flag * !(temp < info.cost) + 3 * (temp < info.cost);
+	temp = info.target->i + ft_lstsize((*stack1)) - info.src->i;
+	if (temp < info.cost)
+		info.cost = temp;
+	info.flag = info.flag * !(temp < info.cost) + 4 * (temp < info.cost);
+	printf("cost : %d    flag : %d\n", info.cost, info.flag);
+	return (info);
+}
+
+static t_cheap	cheapestcalculater(t_list **stack1, t_list **stack2)
+{
+	t_list	*temp;
+	t_cheap	cheapest;
+	t_cheap	compare;
+
+	temp = (*stack1);
+	cheapest = occ(temp, stack1, stack2);
+	while (temp)
+	{
+		compare = occ(temp, stack1, stack2);
+		if (compare.cost < cheapest.cost)
+			cheapest.cost = compare.cost;
+		temp = temp->next;
+	}
+	return (cheapest);
+}
 
 int	main(int ac, char **av)
 {
@@ -148,11 +142,41 @@ int	main(int ac, char **av)
 		exit (0);
 	}
 	stack_a = stackmaker(intarr, list_size, stack_a);
+	
+	t_list	*temp = stack_a;
+	printf("STACK A: ");
+	while (temp)
+	{
+		printf ("%d ", temp->content);
+		temp = temp->next;
+	}
+	while (ft_lstsize(stack_a) > 8)
+		push(&stack_a, &stack_b);
+	temp = stack_a;
+	printf("\nSTACK B: ");
+	printf("\n\n\nSTACK A: ");
+	while (temp)
+	{
+		printf ("%d ", temp->content);
+		temp = temp->next;
+	}
+	temp = stack_b;
+	printf("\nSTACK B: ");
+	while (temp)
+	{
+		printf ("%d ", temp->content);
+		temp = temp->next;
+	}
+	printf("\n\n");
+	temp = stack_a;
+	
+	t_cheap result = cheapestcalculater(&stack_a, &stack_b);
+	printf("src %d and target %d and the cost is %d\n", result.src->content, result.target->content, result.cost);
+	
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);
 	return (0);
 }
-
 
 ///18 feb
 // need to create a list struct
@@ -163,7 +187,6 @@ int	main(int ac, char **av)
 	// uses linked lists function to create nodes
 // free intarr in the new function
 // return to main
-
 
 ///19feb
 // create rules functions
@@ -192,11 +215,9 @@ int	main(int ac, char **av)
 // we will be sorting stack_b as we go this way, but to push back we need to do this process in reverse
 // i believe nodeindex is no longer needed, keep it incase.
 
-
 //4 march
 // cheap stack was reduced to only having the src and target nodes
 	// reason is now the nodes themselves are indexed
 	// this eleminates the need of the functions "nodeindex" and "nodeatindex"
 	// also findmaxindex is no longer needed
 	// "findindex" modified to "findtarget" (more accurate)
-	

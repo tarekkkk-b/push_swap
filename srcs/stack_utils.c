@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:15:55 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/04 10:34:09 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:17:58 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	stackissorted(t_list **stack)
 {
-	t_list *iter = (*stack);
+	t_list	*iter;
+
+	iter = (*stack);
 	while ((iter)->next)
 	{
 		if (iter->content < iter->next->content)
@@ -44,7 +46,9 @@ t_list	*findmax(t_list **stack)
 t_list	*findmin(t_list **stack)
 {
 	t_list	*min;
-	t_list	*temp = (*stack);
+	t_list	*temp;
+
+	temp = (*stack);
 	min = temp;
 	while (temp)
 	{
@@ -75,26 +79,15 @@ t_list	*findtarget(int content, t_list **stack)
 	return (target);
 }
 
-int	findmaxindex(t_list **stack)
+void	sortthree(t_list **stack)
 {
 	t_list	*max;
-	t_list	*temp;
-	int	i;
-	int	save;
 
-	i = 0;
-	save = 0;
-	temp = (*stack);
-	max = temp;
-	while (temp)
-	{
-		if (temp->content > max->content)
-		{
-			max = temp;
-			save = i;
-		}
-		i++;
-		temp = temp->next;
-	}
-	return (save);
+	max = findmax(stack);
+	if ((*stack)->content == max->content)
+		ra(stack, 1);
+	else if ((*stack)->next->content == max->content)
+		rra(stack, 1);
+	if (stackissorted(stack) == 1)
+		sa(stack, 1);
 }
