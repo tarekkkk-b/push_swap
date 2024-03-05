@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:15:55 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/04 21:17:58 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/05 21:01:29 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	stackissorted(t_list **stack)
 {
+	if (!stack || !(*stack))
+		return (0);
 	t_list	*iter;
 
 	iter = (*stack);
@@ -29,6 +31,8 @@ int	stackissorted(t_list **stack)
 
 t_list	*findmax(t_list **stack)
 {
+	if (!stack || !(*stack))
+		return (NULL);
 	t_list	*max;
 	t_list	*temp;
 
@@ -45,6 +49,8 @@ t_list	*findmax(t_list **stack)
 
 t_list	*findmin(t_list **stack)
 {
+	if (!stack || !(*stack))
+		return (NULL);
 	t_list	*min;
 	t_list	*temp;
 
@@ -61,6 +67,8 @@ t_list	*findmin(t_list **stack)
 
 t_list	*findtarget(int content, t_list **stack)
 {
+	if (!stack || !(*stack))
+		return (NULL);
 	t_list	*temp;
 	t_list	*target;
 	t_list	*min;
@@ -79,8 +87,36 @@ t_list	*findtarget(int content, t_list **stack)
 	return (target);
 }
 
+t_list	*findtarget2(int content, t_list **stack)
+{
+	if (!stack || !(*stack))
+		return (NULL);
+	t_list	*temp;
+	t_list	*target;
+	t_list	*max;
+
+	max = findmax(stack);
+	if (content > max->content)
+	{
+		// printf("src : %d  and the target is : %d\n", content, findmin(stack)->content);
+		return (findmin(stack));
+	}
+	temp = (*stack);
+	target = findmax(stack);
+	while (temp)
+	{
+		if (temp->content <= target->content && content < temp->content)
+			target = temp;
+		temp = temp->next;
+	}
+	// printf("src : %d  and the target is : %d\n", content, target->content);
+	return (target);
+}
+
 void	sortthree(t_list **stack)
 {
+	if (!stack || !(*stack))
+		return ;
 	t_list	*max;
 
 	max = findmax(stack);

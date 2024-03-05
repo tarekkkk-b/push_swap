@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:15:23 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/24 14:50:21 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:52:50 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	rot(t_list **stack)
 
 void	ra(t_list **stack_a, int flag)
 {
+	if (!stack_a || !(*stack_a))
+		return ;
 	rot(stack_a);
 	if (flag == 1)
 		write (1, "ra\n", 3);
@@ -41,6 +43,8 @@ void	ra(t_list **stack_a, int flag)
 
 void	rb(t_list **stack_b, int flag)
 {
+	if (!stack_b || !(*stack_b))
+		return ;
 	rot(stack_b);
 	if (flag == 1)
 		write (1, "rb\n", 3);
@@ -48,8 +52,10 @@ void	rb(t_list **stack_b, int flag)
 
 void	rr(t_list **stack_a, t_list **stack_b, int flag)
 {
-	rot(stack_a);
-	rot(stack_b);
+	if (stack_a && (*stack_a))
+		rot(stack_a);
+	if (stack_b && (*stack_b))
+		rot(stack_b);
 	if (flag == 1)
 		write (1, "rr\n", 3);
 }

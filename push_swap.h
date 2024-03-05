@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:03 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/04 21:29:36 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/05 20:27:32 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void	rr(t_list **stack_a, t_list **stack_b, int flag);
 int		stackissorted(t_list **stack);
 void	sortthree(t_list **stack);
 t_list	*findtarget(int content, t_list **stack);
+t_list	*findtarget2(int content, t_list **stack);
 t_list	*findmax(t_list **stack);
 t_list	*findmin(t_list **stack);
 
