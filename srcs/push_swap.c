@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/04 21:54:39 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:05:06 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,11 @@ static t_list	*stackmaker(int *intarr, int list_size, t_list *node)
 	return (free (intarr), node);
 }
 
-static int largerindex(int index1, int index2)
+static int	largerindex(int index1, int index2)
 {
-	int larger;
-	larger = 0;
-	
-	if (index1 > index2)
-		larger = index1;
-	else if (index2 > index1)
-		larger = index2;
-	return (larger);
+	if (index1 >= index2)
+		return (index1);
+	return (index2);
 }
 
 static t_cheap	occ(t_list *node, t_list **stack1, t_list **stack2)
@@ -90,20 +85,32 @@ static t_cheap	occ(t_list *node, t_list **stack1, t_list **stack2)
 	info.target = findtarget(node->content, stack2);
 	info.cost = largerindex(info.src->i, info.target->i);
 	info.flag = 1;
-	temp = ft_lstsize((*stack2)) - info.target->i;
-	if (temp < info.cost)
-		info.cost = temp;
+	temp = largerindex(ft_lstsize((*stack2)) - info.target->i,
+			ft_lstsize((*stack1)) - info.src->i);
 	info.flag = 1 + (temp < info.cost);
-	temp = info.src->i + ft_lstsize((*stack2)) - info.target->i;
 	if (temp < info.cost)
 		info.cost = temp;
+	temp = info.src->i + (ft_lstsize((*stack2)) - info.target->i);
 	info.flag = info.flag * !(temp < info.cost) + 3 * (temp < info.cost);
-	temp = info.target->i + ft_lstsize((*stack1)) - info.src->i;
 	if (temp < info.cost)
 		info.cost = temp;
+	temp = info.target->i + (ft_lstsize((*stack1)) - info.src->i);
 	info.flag = info.flag * !(temp < info.cost) + 4 * (temp < info.cost);
-	printf("cost : %d    flag : %d\n", info.cost, info.flag);
+	if (temp < info.cost)
+		info.cost = temp;
 	return (info);
+}
+
+static void	redirect(t_cheap info, t_list **stack1, t_list **stack2)
+{
+	if (info.flag == 1)
+		;
+	if (info.flag == 2)
+		;
+	if (info.flag == 3)
+		;
+	if (info.flag == 4)
+		;
 }
 
 static t_cheap	cheapestcalculater(t_list **stack1, t_list **stack2)
@@ -114,6 +121,7 @@ static t_cheap	cheapestcalculater(t_list **stack1, t_list **stack2)
 
 	temp = (*stack1);
 	cheapest = occ(temp, stack1, stack2);
+	temp = temp->next;
 	while (temp)
 	{
 		compare = occ(temp, stack1, stack2);
@@ -129,7 +137,7 @@ int	main(int ac, char **av)
 	int		*intarr;
 	int		list_size;
 	t_list	*stack_a;
-	t_list	*stack_b = NULL;
+	t_list	*stack_b;
 
 	list_size = 0;
 	stack_a = NULL;
@@ -142,37 +150,6 @@ int	main(int ac, char **av)
 		exit (0);
 	}
 	stack_a = stackmaker(intarr, list_size, stack_a);
-	
-	t_list	*temp = stack_a;
-	printf("STACK A: ");
-	while (temp)
-	{
-		printf ("%d ", temp->content);
-		temp = temp->next;
-	}
-	while (ft_lstsize(stack_a) > 8)
-		push(&stack_a, &stack_b);
-	temp = stack_a;
-	printf("\nSTACK B: ");
-	printf("\n\n\nSTACK A: ");
-	while (temp)
-	{
-		printf ("%d ", temp->content);
-		temp = temp->next;
-	}
-	temp = stack_b;
-	printf("\nSTACK B: ");
-	while (temp)
-	{
-		printf ("%d ", temp->content);
-		temp = temp->next;
-	}
-	printf("\n\n");
-	temp = stack_a;
-	
-	t_cheap result = cheapestcalculater(&stack_a, &stack_b);
-	printf("src %d and target %d and the cost is %d\n", result.src->content, result.target->content, result.cost);
-	
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);
 	return (0);

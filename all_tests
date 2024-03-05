@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 13:58:54 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/03 21:43:54 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:04:42 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,3 +277,38 @@
 	// 	printf("\n\n");
 	// 	temp = temp->next;
 	// }
+
+	// calculator test
+
+	// t_list	*temp = stack_a;
+	// printf("STACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// while (ft_lstsize(stack_a) > 8)
+	// 	push(&stack_a, &stack_b);
+	// temp = stack_a;
+	// printf("\nSTACK B: ");
+	// printf("\n\n\nSTACK A: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// temp = stack_b;
+	// printf("\nSTACK B: ");
+	// while (temp)
+	// {
+	// 	printf ("%d ", temp->content);
+	// 	temp = temp->next;
+	// }
+	// printf("\n\n");
+	// indexer(&stack_a);
+	// indexer(&stack_b);
+	// temp = stack_a;
+	
+	// t_cheap result = cheapestcalculater(&stack_a, &stack_b);
+	// printf("src %d and target %d and the cost is %d\n", result.src->content, result.target->content, result.cost);
+	
