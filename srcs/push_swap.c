@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/05 15:05:06 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:05:22 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,16 +101,85 @@ static t_cheap	occ(t_list *node, t_list **stack1, t_list **stack2)
 	return (info);
 }
 
+static void	rotbothup(t_cheap info, t_list **stack1, t_list **stack2)
+{
+	while (info.src->i > 0 && info.target->i > 0)
+	{
+		rr(stack1, stack2, 1);
+		info.src->i--;
+		info.target->i--;
+	}
+	while (info.src->i > 0)
+	{
+		ra(stack1, 1);
+		info.src->i--;
+	}
+	while (info.target->i > 0)
+	{
+		rb(stack2, 1);
+		info.target->i--;
+	}
+}
+
+static void	rotbothdown(t_cheap info, t_list **stack1, t_list **stack2)
+{
+	while ((ft_lstsize(*stack1) - info.src->i) > 0 && 
+		(ft_lstsize(*stack2) - info.target->i) > 0)
+	{
+		rrr(stack1, stack2, 1);
+		info.src->i++;
+		info.target->i++;
+	}
+	while ((ft_lstsize(*stack1) - info.src->i) > 0)
+	{
+		rra(stack1, 1);
+		info.src->i++;
+	}
+	while ((ft_lstsize(*stack2) - info.target->i) > 0)
+	{
+		rrb(stack2, 1);
+		info.target->i++;
+	}
+}
+
+static void	rotarevrotb(t_cheap info, t_list **stack1, t_list **stack2)
+{
+	while (info.src->i > 0)
+	{
+		ra(stack1, 1);
+		info.src->i--;
+	}
+	while ((ft_lstsize(*stack2) - info.target->i) > 0)
+	{
+		rrb(stack2, 1);
+		info.target->i++;
+	}
+}
+
+static void	rotbrevrota(t_cheap info, t_list **stack1, t_list **stack2)
+{
+	while (info.target->i > 0)
+	{
+		rb(stack2, 1);
+		info.target->i--;
+	}
+	while ((ft_lstsize(*stack1) - info.src->i) > 0)
+	{
+		rra(stack1, 1);
+		info.src->i++;
+	}
+}
+
 static void	redirect(t_cheap info, t_list **stack1, t_list **stack2)
 {
 	if (info.flag == 1)
-		;
+		rotbothup(info, stack1, stack2);
 	if (info.flag == 2)
-		;
+		rotbothdown(info, stack1, stack2);
 	if (info.flag == 3)
-		;
+		rotarevrotb(info, stack1, stack2);
 	if (info.flag == 4)
-		;
+		rotbrevrota(info, stack1, stack2);
 }
 
 static t_cheap	cheapestcalculater(t_list **stack1, t_list **stack2)
