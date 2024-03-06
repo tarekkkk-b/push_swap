@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:03 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/05 20:27:32 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:25:25 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,21 @@ void	rr(t_list **stack_a, t_list **stack_b, int flag);
 //                 stack utils                //
 
 int		stackissorted(t_list **stack);
-void	sortthree(t_list **stack);
+void	indexer(t_list **stack);
 t_list	*findtarget(int content, t_list **stack);
-t_list	*findtarget2(int content, t_list **stack);
 t_list	*findmax(t_list **stack);
 t_list	*findmin(t_list **stack);
+
+//               sort utils                 //
+
+int		largerindex(int index1, int index2);
+void	sortthree(t_list **stack);
+void	redirect(t_cheap info, t_list **stack1, t_list **stack2);
+void	rotbothup(t_cheap info, t_list **stack1, t_list **stack2);
+void	rotbothdown(t_cheap info, t_list **stack1, t_list **stack2);
+void	rotarevrotb(t_cheap info, t_list **stack1, t_list **stack2);
+void	rotbrevrota(t_cheap info, t_list **stack1, t_list **stack2);
+t_cheap	cheapestcalculater(t_list **stack1, t_list **stack2);
+t_cheap	occ(t_list *node, t_list **stack1, t_list **stack2);
 
 #endif

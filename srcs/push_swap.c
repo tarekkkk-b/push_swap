@@ -6,27 +6,11 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/05 22:01:41 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/06 20:11:48 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-static void	indexer(t_list **stack)
-{
-	if (!stack || !(*stack))
-		return ;
-	int		index;
-	t_list	*temp;
-
-	index = 0;
-	temp = (*stack);
-	while (temp)
-	{
-		temp->i = index++;
-		temp = temp->next;
-	}
-}
 
 int	*input_handling(char **av, int ac, int *list_size)
 {
@@ -71,226 +55,69 @@ static t_list	*stackmaker(int *intarr, int list_size, t_list *node)
 	return (free (intarr), node);
 }
 
-static int	largerindex(int index1, int index2)
-{
-	if (index1 >= index2)
-		return (index1);
-	return (index2);
-}
-
-static t_cheap	occ(t_list *node, t_list **stack1, t_list **stack2, int flag)
-{
-	t_cheap			info;
-	unsigned int	temp;
-
-	info.src = node;
-	if (flag == 1)
-		info.target = findtarget(node->content, stack2);
-	if (flag == 2)
-		info.target = findtarget2(node->content, stack2);
-	//case 1
-	info.cost = largerindex(info.src->i, info.target->i);
-	info.flag = 1;
-
-	//case 2
-	temp = largerindex(ft_lstsize((*stack2)) - info.target->i,
-			ft_lstsize((*stack1)) - info.src->i);
-	info.flag = 1 + (temp < info.cost);
-	if (temp < info.cost)
-		info.cost = temp;
-
-	//case 3
-	temp = info.src->i + (ft_lstsize((*stack2)) - info.target->i);
-	info.flag = info.flag * !(temp < info.cost) + 3 * (temp < info.cost);
-	if (temp < info.cost)
-		info.cost = temp;
-
-	//case 4
-	temp = info.target->i + (ft_lstsize((*stack1)) - info.src->i);
-	info.flag = info.flag * !(temp < info.cost) + 4 * (temp < info.cost);
-	if (temp < info.cost)
-		info.cost = temp;
-	return (info);
-}
-
-static void	rotbothup(t_cheap info, t_list **stack1, t_list **stack2)
-{
-	if (!stack1 || !stack2 || !info.src || !info.target)
-		return ;
-	while (info.src->i > 0 && info.target->i > 0)
-	{
-		if (!(*stack1) || !(*stack2))
-			break ;
-		rr(stack1, stack2, 1);
-		info.src->i--;
-		info.target->i--;
-	}
-	while (info.src->i > 0)
-	{
-		if (!(*stack1))
-			break ;
-		ra(stack1, 1);
-		info.src->i--;
-	}
-	while (info.target->i > 0)
-	{
-		if (!(*stack2))
-			break ;
-		rb(stack2, 1);
-		info.target->i--;
-	}
-}
-
-static void	rotbothdown(t_cheap info, t_list **stack1, t_list **stack2)
-{
-	if (!stack1 || !stack2)
-		return ;
-	while ((ft_lstsize(*stack1) - info.src->i) > 0 && 
-		(ft_lstsize(*stack2) - info.target->i) > 0)
-	{
-		rrr(stack1, stack2, 1);
-		info.src->i++;
-		info.target->i++;
-	}
-	while ((ft_lstsize(*stack1) - info.src->i) > 0)
-	{
-		if (!(*stack1))
-			break ;
-		rra(stack1, 1);
-		info.src->i++;
-	}
-	while ((ft_lstsize(*stack2) - info.target->i) > 0)
-	{
-		if (!(*stack2))
-			break ;
-		rrb(stack2, 1);
-		info.target->i++;
-	}
-}
-
-static void	rotarevrotb(t_cheap info, t_list **stack1, t_list **stack2)
-{
-	if (!stack1 || !stack2)
-		return ;
-	while (info.src->i > 0)
-	{
-		if (!(*stack1))
-			break ;
-		ra(stack1, 1);
-		info.src->i--;
-	}
-	while ((ft_lstsize(*stack2) - info.target->i) > 0)
-	{
-		if (!(*stack2))
-			break ;
-		rrb(stack2, 1);
-		info.target->i++;
-	}
-}
-
-static void	rotbrevrota(t_cheap info, t_list **stack1, t_list **stack2)
-{
-	if (!stack1 || !stack2)
-		return ;
-	while (info.target->i > 0)
-	{
-		if (!(*stack2))
-			break ;
-		rb(stack2, 1);
-		info.target->i--;
-	}
-	while ((ft_lstsize(*stack1) - info.src->i) > 0)
-	{
-		if (!(*stack1))
-			break ;
-		rra(stack1, 1);
-		info.src->i++;
-	}
-}
-
-static void	redirect(t_cheap info, t_list **stack1, t_list **stack2)
-{
-	if (info.flag == 1)
-		rotbothup(info, stack1, stack2);
-	if (info.flag == 2)
-		rotbothdown(info, stack1, stack2);
-	if (info.flag == 3)
-		rotarevrotb(info, stack1, stack2);
-	if (info.flag == 4)
-		rotbrevrota(info, stack1, stack2);
-}
-
-static t_cheap	cheapestcalculater(t_list **stack1, t_list **stack2, int flag)
-{
-	t_list	*temp;
-	t_cheap	cheapest;
-	t_cheap	compare;
-
-	if (!stack1 || !(*stack1) || !stack2 || !(*stack2))
-	{
-		cheapest.cost = 0;
-		cheapest.src = (*stack1);
-		cheapest.target = (*stack2);
-		cheapest.flag = 1;
-		return (cheapest);	
-	}
-	temp = (*stack1);
-	cheapest = occ(temp, stack1, stack2, flag);
-	temp = temp->next;
-	while (temp)
-	{
-		compare = occ(temp, stack1, stack2, flag);
-		if (compare.cost < cheapest.cost)
-			cheapest.cost = compare.cost;
-		temp = temp->next;
-	}
-	return (cheapest);
-}
-
 // static void print(t_list **stack)
 // {
 // 	t_list *temp = (*stack);
 // 	while (temp)
 // 	{
-// 		printf ("%d", temp->content);
+// 		printf ("%d\n", temp->content);
 // 		temp = temp->next;
 // 	}
 // 	printf("\n");
-// 	temp = (*stack);
-// 	while (temp)
-// 	{
-// 		printf ("%d", temp->i);
-// 		temp = temp->next;
-// 	}
-// 	printf("\n");
+// 	// temp = (*stack);
+// 	// while (temp)
+// 	// {
+// 	// 	printf ("%d", temp->i);
+// 	// 	temp = temp->next;
+// 	// }
+// 	// printf("\n");
 // }
+
+static void	pushback(t_list **stack_a, t_list **stack_b)
+{
+	if (!stack_b || !(*stack_b))
+		return ;
+	while (findmax(stack_b)->i != 0 && findmax(stack_b)->i > (ft_lstsize(*stack_b) / 2))
+	{
+		rrb(stack_b, 1);
+		indexer(stack_b);
+	}
+	while(findmax(stack_b)->i != 0 && findmax(stack_b)->i <= (ft_lstsize(*stack_b) / 2))
+	{
+		rb(stack_b, 1);
+		indexer(stack_b);
+	}
+	if((*stack_a)->content < (*stack_b)->content)
+	{
+		while (ft_lstlast(*stack_a)->content > (*stack_b)->content)
+			rra(stack_a, 1);
+	}
+	while (*stack_b)
+	{
+		pa(stack_a, stack_b, 1);
+		while ((*stack_b) && ft_lstlast(*stack_a)->content > (*stack_b)->content
+			&& ft_lstlast(*stack_a)->content < (*stack_a)->content)
+				rra(stack_a, 1);
+	}
+}
+
 static void	sort(t_list **stack_a, t_list **stack_b)
 {
-	t_cheap	cheapest;
-	
-	while (ft_lstsize(*stack_a) > 3 && ft_lstsize(*stack_b) < 2)
-		pb(stack_a, stack_b, 1);
-	indexer(stack_a);
-	indexer(stack_b);
-	while (ft_lstsize(*stack_a) > 3)
+	// while (ft_lstsize((*stack_a)) > 3 && ft_lstsize((*stack_b)) < 2)
+	// 	pb(stack_a, stack_b, 1);
+	// indexer(stack_a);
+	// indexer(stack_b);
+	// (void)pushback;
+	while (ft_lstsize((*stack_a)) > 3)
 	{
-		cheapest = cheapestcalculater(stack_a, stack_b, 1);
-		redirect(cheapest, stack_a, stack_b);
+		redirect(cheapestcalculater(stack_a, stack_b), stack_a, stack_b);
 		pb(stack_a, stack_b, 1);
 		indexer(stack_a);
 		indexer(stack_b);
 	}
 	sortthree(stack_a);
 	indexer(stack_a);
-	// while (*stack_b)
-	// {
-	// 	cheapest = cheapestcalculater(stack_b, stack_a, 2);
-	// 	redirect(cheapest, stack_b, stack_a);
-	// 	pa(stack_a, stack_b, 1);
-	// 	indexer(stack_a);
-	// 	indexer(stack_b);
-	// }
-	ft_lstclear(stack_b, free);
+	pushback(stack_a, stack_b);
 }
 
 int	main(int ac, char **av)
@@ -311,17 +138,14 @@ int	main(int ac, char **av)
 		exit (0);
 	}
 	stack_a = stackmaker(intarr, list_size, stack_a);
+	// printf("%d \n", list_size);
 	stack_b = NULL;
+	// check if sorted.
 	sort(&stack_a, &stack_b);
-	while (stackissorted(&stack_a) == 1)
-		rra(&stack_a, 1);
-	// t_list *temp = stack_a;
-	// while (temp)
-	// {
-	// 	printf("%d ", temp->content);
-	// 	temp = temp->next;
-	// }
-	// printf ("\n");
+	// while (stackissorted(&stack_a) == 1)
+	// 	rra(&stack_a, 1);
+	// print(&stack_a);
+	// ft_lstclear(stack_b, free);
 	ft_lstclear(&stack_a, free);
 	return (0);
 }

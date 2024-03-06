@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:15:55 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/05 21:01:29 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:23:13 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	stackissorted(t_list **stack)
 {
-	if (!stack || !(*stack))
-		return (0);
 	t_list	*iter;
 
+	if (!stack || !(*stack))
+		return (0);
 	iter = (*stack);
 	while ((iter)->next)
 	{
@@ -31,11 +31,11 @@ int	stackissorted(t_list **stack)
 
 t_list	*findmax(t_list **stack)
 {
-	if (!stack || !(*stack))
-		return (NULL);
 	t_list	*max;
 	t_list	*temp;
 
+	if (!stack || !(*stack))
+		return (NULL);
 	temp = (*stack);
 	max = temp;
 	while (temp)
@@ -49,11 +49,11 @@ t_list	*findmax(t_list **stack)
 
 t_list	*findmin(t_list **stack)
 {
-	if (!stack || !(*stack))
-		return (NULL);
 	t_list	*min;
 	t_list	*temp;
 
+	if (!stack || !(*stack))
+		return (NULL);
 	temp = (*stack);
 	min = temp;
 	while (temp)
@@ -67,12 +67,12 @@ t_list	*findmin(t_list **stack)
 
 t_list	*findtarget(int content, t_list **stack)
 {
-	if (!stack || !(*stack))
-		return (NULL);
 	t_list	*temp;
 	t_list	*target;
 	t_list	*min;
 
+	if (!stack || !(*stack))
+		return (NULL);
 	min = findmin(stack);
 	if (content < min->content)
 		return (findmax(stack));
@@ -87,43 +87,18 @@ t_list	*findtarget(int content, t_list **stack)
 	return (target);
 }
 
-t_list	*findtarget2(int content, t_list **stack)
+void	indexer(t_list **stack)
 {
-	if (!stack || !(*stack))
-		return (NULL);
+	int		index;
 	t_list	*temp;
-	t_list	*target;
-	t_list	*max;
 
-	max = findmax(stack);
-	if (content > max->content)
-	{
-		// printf("src : %d  and the target is : %d\n", content, findmin(stack)->content);
-		return (findmin(stack));
-	}
-	temp = (*stack);
-	target = findmax(stack);
-	while (temp)
-	{
-		if (temp->content <= target->content && content < temp->content)
-			target = temp;
-		temp = temp->next;
-	}
-	// printf("src : %d  and the target is : %d\n", content, target->content);
-	return (target);
-}
-
-void	sortthree(t_list **stack)
-{
 	if (!stack || !(*stack))
 		return ;
-	t_list	*max;
-
-	max = findmax(stack);
-	if ((*stack)->content == max->content)
-		ra(stack, 1);
-	else if ((*stack)->next->content == max->content)
-		rra(stack, 1);
-	if (stackissorted(stack) == 1)
-		sa(stack, 1);
+	index = 0;
+	temp = (*stack);
+	while (temp)
+	{
+		temp->i = index++;
+		temp = temp->next;
+	}
 }

@@ -6,7 +6,7 @@
 #    By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 16:34:18 by tabadawi          #+#    #+#              #
-#    Updated: 2024/03/05 18:53:21 by tabadawi         ###   ########.fr        #
+#    Updated: 2024/03/06 20:45:53 by tabadawi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS =  -g3 #-Wall -Werror -Wextra -fsanitize=address
 
 SRC_DIR = ./srcs/
 
@@ -37,7 +37,9 @@ SRC	=	utils/ft_atoi.c \
 		rules/rr_rules.c \
 		rules/r_rules.c \
 		push_swap.c \
-		stack_utils.c
+		stack_utils.c \
+		sort_utils1.c \
+		sort_utils2.c
 
 SRC_PATH = $(addprefix $(SRC_DIR), $(SRC))
 
