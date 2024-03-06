@@ -6,7 +6,7 @@
 #    By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 16:34:18 by tabadawi          #+#    #+#              #
-#    Updated: 2024/03/06 20:45:53 by tabadawi         ###   ########.fr        #
+#    Updated: 2024/03/06 21:23:31 by tabadawi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS =  -g3 #-Wall -Werror -Wextra -fsanitize=address
+CFLAGS =  -g3 -Wall -Werror -Wextra
 
 SRC_DIR = ./srcs/
 

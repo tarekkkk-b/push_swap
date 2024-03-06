@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:15:23 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/06 13:51:00 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:53:33 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	rot(t_list **stack)
 		last = last->next;
 	ft_lstadd_back(&last, temp);
 	temp->next = NULL;
+	indexer(stack);
 	// last->next = temp;
 	// temp->next = NULL;
 	// t_list	*iter = (*stack);

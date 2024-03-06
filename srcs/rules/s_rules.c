@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:09:24 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/05 19:55:43 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:52:06 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	swap(t_list **stack)
 	tmp = (*stack)->content;
 	(*stack)->content = (*stack)->next->content;
 	(*stack)->next->content = tmp;
+	indexer(stack);
 	// int		integer1;
 	// int		integer2;
 	// t_list	*temp1;

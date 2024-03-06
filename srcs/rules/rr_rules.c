@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:22:32 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/06 20:41:55 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:53:08 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	revrot(t_list **stack)
 		iter = iter->next;
 	iter->next = NULL;
 	free (temp);
+	indexer(stack);
 }
 
 void	rra(t_list **stack_a, int flag)

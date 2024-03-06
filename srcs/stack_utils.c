@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:15:55 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/06 15:23:13 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:05:01 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_list	*findmin(t_list **stack)
 t_list	*findtarget(int content, t_list **stack)
 {
 	t_list	*temp;
-	t_list	*target;
+	t_list	*target = malloc(sizeof(t_list));
 	t_list	*min;
 
 	if (!stack || !(*stack))
