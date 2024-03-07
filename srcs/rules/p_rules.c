@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:23 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/06 21:53:00 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:54:06 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	push(t_list	**stack1, t_list **stack2)
 	*stack1 = (*stack1)->next;
 	ft_lstadd_front(stack2, ft_lstnew(temp->content));
 	free (temp);
-	indexer(stack1);
-	indexer(stack2);
 	// int		integer;
 	// integer = (*stack1)->content;
 	// temp = *stack1;

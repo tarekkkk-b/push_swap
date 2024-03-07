@@ -19,7 +19,6 @@ void	swap(t_list **stack)
 	tmp = (*stack)->content;
 	(*stack)->content = (*stack)->next->content;
 	(*stack)->next->content = tmp;
-	indexer(stack);
 	// int		integer1;
 	// int		integer2;
 	// t_list	*temp1;

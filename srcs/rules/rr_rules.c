@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:22:32 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/06 21:53:08 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/07 18:16:59 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	revrot(t_list **stack)
 	t_list	*temp;
 	t_list	*iter;
 
-	if (!stack || !(*stack) || ft_lstsize(*stack) == 1)
+	if (!stack || !(*stack))
 		return ;
 	iter = (*stack);
 	temp = ft_lstlast(*stack);
@@ -25,8 +25,7 @@ void	revrot(t_list **stack)
 	while (iter->next != temp)
 		iter = iter->next;
 	iter->next = NULL;
-	free (temp);
-	indexer(stack);
+	// free (temp);
 }
 
 void	rra(t_list **stack_a, int flag)

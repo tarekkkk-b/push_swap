@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/06 20:11:48 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/07 18:02:44 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,10 +142,10 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	// check if sorted.
 	sort(&stack_a, &stack_b);
-	// while (stackissorted(&stack_a) == 1)
-	// 	rra(&stack_a, 1);
+	while (stackissorted(&stack_a) == 1)
+		rra(&stack_a, 1);
 	// print(&stack_a);
-	// ft_lstclear(stack_b, free);
+	// ft_lstclear(&stack_b, free);
 	ft_lstclear(&stack_a, free);
 	return (0);
 }
