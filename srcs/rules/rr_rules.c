@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:22:32 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/07 18:16:59 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/07 18:31:31 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	revrot(t_list **stack)
 		return ;
 	iter = (*stack);
 	temp = ft_lstlast(*stack);
-	ft_lstadd_front(stack, ft_lstnew(temp->content));
+	// ft_lstadd_front(stack, ft_lstnew(temp->content));
+	ft_lstadd_front(stack, temp);
 	while (iter->next != temp)
 		iter = iter->next;
 	iter->next = NULL;
