@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:01:00 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/07 17:43:55 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:57:46 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	rotbothdown(t_cheap info, t_list **stack1, t_list **stack2)
 	}
 }
 
-void	rotarevrotb(t_cheap info ,t_list **stack1, t_list **stack2)
+void	rotarevrotb(t_cheap info, t_list **stack1, t_list **stack2)
 {
 	if (!stack1 || !stack2)
 		return ;

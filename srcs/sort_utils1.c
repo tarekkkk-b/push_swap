@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:50:34 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/07 18:25:38 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:58:20 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sortthree(t_list **stack)
 {
 	t_list	*max;
 
-	if (!stack || !(*stack))
+	if (!stack || !(*stack) || ft_lstsize(*stack) != 3)
 		return ;
 	max = findmax(stack);
 	if ((*stack)->content == max->content)
@@ -26,6 +26,7 @@ void	sortthree(t_list **stack)
 	if (stackissorted(stack) == 1)
 		sa(stack, 1);
 }
+
 static t_cheap	replace(t_cheap cheapest, t_cheap compare)
 {
 	cheapest.cost = compare.cost;
@@ -93,5 +94,3 @@ int	largerindex(int index1, int index2)
 		return (index1);
 	return (index2);
 }
-
-

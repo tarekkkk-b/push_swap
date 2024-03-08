@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:42:46 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/06 13:50:18 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:56:28 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_lstsize(t_list *lst)
 {
 	int	i;
-	
+
 	if (lst == NULL)
 		return (0);
 	i = 0;

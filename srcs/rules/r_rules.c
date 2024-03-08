@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:15:23 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/07 17:16:11 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:54:59 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@ void	rot(t_list **stack)
 		last = last->next;
 	ft_lstadd_back(&last, temp);
 	temp->next = NULL;
-	// last->next = temp;
-	// temp->next = NULL;
-	// t_list	*iter = (*stack);
-	// temp = (*stack);
-	// while (*stack)
-	// 	(*stack) = (*stack)->next;
 }
 
 void	ra(t_list **stack_a, int flag)
@@ -59,7 +53,3 @@ void	rr(t_list **stack_a, t_list **stack_b, int flag)
 	if (flag == 1)
 		write (1, "rr\n", 3);
 }
-
-// ra -> Shift up all elements of stack a by 1. The first element becomes the last one.
-// rb -> Shift up all elements of stack b by 1. The first element becomes the last one.
-// rr : ra and rb at the same time.

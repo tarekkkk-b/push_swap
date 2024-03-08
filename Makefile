@@ -6,7 +6,7 @@
 #    By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 16:34:18 by tabadawi          #+#    #+#              #
-#    Updated: 2024/03/06 21:23:31 by tabadawi         ###   ########.fr        #
+#    Updated: 2024/03/08 16:00:50 by tabadawi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ SRC	=	utils/ft_atoi.c \
 		push_swap.c \
 		stack_utils.c \
 		sort_utils1.c \
-		sort_utils2.c
+		sort_utils2.c \
+		main.c
 
 SRC_PATH = $(addprefix $(SRC_DIR), $(SRC))
 
