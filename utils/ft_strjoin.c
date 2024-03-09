@@ -6,11 +6,11 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:11 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/04 15:48:36 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:04:21 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
 char	*ft_strjoin(char *input, char *argv)
 {

@@ -6,11 +6,11 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:15:55 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/07 18:22:31 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:06:26 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	stackissorted(t_list **stack)
 {

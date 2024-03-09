@@ -6,11 +6,11 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:44 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/24 14:52:41 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:04:44 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
 int	checker(int *intarr, int number, int count)
 {

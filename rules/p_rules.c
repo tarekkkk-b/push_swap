@@ -6,19 +6,36 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:23 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/08 15:54:46 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 19:24:30 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
 void	push(t_list	**stack1, t_list **stack2)
 {
 	t_list	*temp;
 
+	if (!*stack1)
+		return ;
 	temp = (*stack1);
 	*stack1 = (*stack1)->next;
 	ft_lstadd_front(stack2, ft_lstnew(temp->content));
+	t_list *itr;
+
+	itr = (*stack2);
+	while (itr)
+	{
+		printf("stack 2 node is: %d\n", itr->content);
+		itr= itr->next;
+	}
+	itr = (*stack1);
+	while (itr)
+	{
+		printf("stack 1 node is: %d\n", itr->content);
+		itr= itr->next;
+	}
+	printf("thats it\n");
 	free (temp);
 }
 

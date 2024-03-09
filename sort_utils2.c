@@ -6,11 +6,11 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:01:00 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/08 15:57:46 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:06:22 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	redirect(t_cheap info, t_list **stack1, t_list **stack2)
 {

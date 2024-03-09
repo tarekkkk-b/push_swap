@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:12:38 by tabadawi          #+#    #+#             */
-/*   Updated: 2023/12/29 20:47:06 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:16:41 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 
 char	*get_next_line(int fd);
 char	*ft_readfile(char *save, int fd);
-int		ft_strlen(const char *str);
+int		gnlft_strlen(const char *str);
 char	*ft_strchr(char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
+char	*gnlft_strjoin(char *s1, char *s2);
 char	*ft_get_line(char *save);
 char	*ft_save(char *save);
 

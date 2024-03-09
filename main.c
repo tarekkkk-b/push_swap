@@ -6,11 +6,11 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:53:34 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/08 15:56:43 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:06:13 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	main(int ac, char **av)
 {

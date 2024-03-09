@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 15:42:46 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/08 15:56:28 by tabadawi         ###   ########.fr       */
+/*   Created: 2023/11/21 15:44:16 by tabadawi          #+#    #+#             */
+/*   Updated: 2024/03/09 17:05:29 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
-int	ft_lstsize(t_list *lst)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	int	i;
-
-	if (lst == NULL)
-		return (0);
-	i = 0;
-	while (lst)
+	(void)del;
+	if (del != NULL)
 	{
-		lst = lst->next;
-		i++;
+		if (lst)
+		{
+			free(lst);
+		}
 	}
-	return (i);
 }

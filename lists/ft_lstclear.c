@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 15:42:28 by tabadawi          #+#    #+#             */
-/*   Updated: 2023/11/28 14:16:32 by tabadawi         ###   ########.fr       */
+/*   Created: 2023/11/21 15:44:30 by tabadawi          #+#    #+#             */
+/*   Updated: 2024/03/09 17:05:24 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstclear(t_list **lst, void (*del)(void	*))
 {
+	t_list	*temp;
+
 	if (lst)
 	{
-		if (*lst)
-			new->next = *lst;
-		*lst = new;
+		while (lst && *lst)
+		{
+			temp = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			*lst = temp;
+		}
 	}
 }

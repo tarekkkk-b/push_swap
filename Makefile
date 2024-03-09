@@ -6,17 +6,17 @@
 #    By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 16:34:18 by tabadawi          #+#    #+#              #
-#    Updated: 2024/03/08 16:00:50 by tabadawi         ###   ########.fr        #
+#    Updated: 2024/03/09 18:19:33 by tabadawi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
+BONUS = checker
+
 CC = cc
 
-CFLAGS =  -g3 -Wall -Werror -Wextra
-
-SRC_DIR = ./srcs/
+CFLAGS = -Wall -Werror -Wextra
 
 SRC	=	utils/ft_atoi.c \
 		utils/ft_split.c \
@@ -42,34 +42,51 @@ SRC	=	utils/ft_atoi.c \
 		sort_utils2.c \
 		main.c
 
-SRC_PATH = $(addprefix $(SRC_DIR), $(SRC))
+BONUS_SRC =		utils/ft_atoi.c \
+				utils/ft_split.c \
+				utils/ft_strjoin.c \
+				utils/is_smth.c \
+				utils/parsing.c \
+				utils/utils2.c \
+				utils/utils.c \
+				lists/ft_lstnew.c \
+				lists/ft_lstadd_back.c \
+				lists/ft_lstlast.c \
+				lists/ft_lstclear.c \
+				lists/ft_lstdelone.c \
+				lists/ft_lstadd_front.c \
+				lists/ft_lstsize.c \
+				rules/p_rules.c \
+				rules/s_rules.c \
+				rules/rr_rules.c \
+				rules/r_rules.c \
+				push_swap.c \
+				stack_utils.c \
+				sort_utils1.c \
+				sort_utils2.c \
+				bonus/checker_utils.c \
+				bonus/checker.c \
+				bonus/get_next_line/get_next_line.c \
+				bonus/get_next_line/get_next_line_utils.c
+				
+OBJS =	$(SRC:.c=.o)
 
-OBJ = $(SRC:.c=.o)
+BONUS_OBJS =	$(BONUS_SRC:.c=.o)
 
-OBJ_DIR = ./objects/
-
-OBJ_PATH = $(addprefix $(OBJ_DIR), $(OBJ))
+CFLAGS	= -Wall -Werror -Wextra -fsanitize=address -g3
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJ_PATH)
-	@$(CC) $(CFLAGS) $(OBJ_PATH) -o $(NAME)
-	@echo "push_swap created"
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) -o $@ $^
 
-$(OBJ_PATH): $(SRC_PATH)
-	@make -s $(OBJ)
-
-$(OBJ):
-	@$(CC) $(CFLAGS) $(SRC_DIR)$(@:%.o=%.c) -c -o $(OBJ_DIR)$@
-
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)lists $(OBJ_DIR)utils $(OBJ_DIR)rules
-
+bonus:	$(BONUS_OBJS)
+	@$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS)
 clean:
-	@rm -rf $(OBJ_DIR)
+	@rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(BONUS)
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:12:05 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/12 16:54:28 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:18:13 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_readfile(char *save, int fd)
 			return (NULL);
 		}
 		buffer[rd] = '\0';
-		save = ft_strjoin(save, buffer);
+		save = gnlft_strjoin(save, buffer);
 	}
 	free(buffer);
 	return (save);

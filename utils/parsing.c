@@ -6,11 +6,11 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:54 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/18 17:29:50 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:04:35 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
 static int	digitcheck(char *sp_inp, int *intarr)
 {

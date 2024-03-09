@@ -6,11 +6,11 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:24 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/05 20:23:52 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:04:13 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
 static void	limitcheck(long result, int *intarr, char **arr)
 {

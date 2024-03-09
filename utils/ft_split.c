@@ -6,11 +6,11 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 18:34:49 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/02/19 12:30:17 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:04:17 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
 static int	count(const char *input, char sep)
 {

@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   is_smth.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 15:44:30 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/06 17:36:17 by tabadawi         ###   ########.fr       */
+/*   Created: 2024/01/31 16:24:33 by tabadawi          #+#    #+#             */
+/*   Updated: 2024/03/09 17:04:27 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void	*))
+int	ft_isspace(char	*av)
 {
-	t_list	*temp;
+	int	i;
 
-	if (lst)
+	i = 0;
+	while (av[i])
 	{
-		while (lst && *lst)
-		{
-			temp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			*lst = temp;
-		}
+		if (av[i] != ' ')
+			return (0);
+		i++;
 	}
+	return (1);
+}
+
+int	ft_isdigit(int sp_inp)
+{
+	if (sp_inp >= '0' && sp_inp <= '9')
+		return (1);
+	return (0);
 }

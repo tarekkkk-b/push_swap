@@ -6,11 +6,11 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:43:12 by tabadawi          #+#    #+#             */
-/*   Updated: 2023/12/04 13:28:53 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:05:34 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
 t_list	*ft_lstlast(t_list *lst)
 {

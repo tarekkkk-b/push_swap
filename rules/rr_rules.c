@@ -6,11 +6,11 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:22:32 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/08 15:55:17 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:05:09 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
 void	revrot(t_list **stack)
 {

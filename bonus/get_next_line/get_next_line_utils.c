@@ -6,13 +6,13 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:12:26 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/01/10 14:55:43 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:17:38 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *str)
+int	gnlft_strlen(const char *str)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ char	*ft_strchr(char *save, int c)
 	if (!save)
 		return (0);
 	if ((char)c == '\0')
-		return (&save[ft_strlen(save)]);
+		return (&save[gnlft_strlen(save)]);
 	while (save[i] != '\0')
 	{
 		if (save[i] == (char)c)
@@ -42,7 +42,7 @@ char	*ft_strchr(char *save, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char *sv, char *buff)
+char	*gnlft_strjoin(char *sv, char *buff)
 {
 	char	*newsave;
 	int		i;
@@ -52,7 +52,8 @@ char	*ft_strjoin(char *sv, char *buff)
 	i = 0;
 	if (!sv && !buff)
 		return (NULL);
-	newsave = malloc(sizeof(char) * ((ft_strlen(sv) + ft_strlen(buff)) + 1));
+	newsave = malloc(sizeof(char) * ((gnlft_strlen(sv)
+		+ gnlft_strlen(buff)) + 1));
 	if (!newsave)
 		return (NULL);
 	while (sv && sv[i] != '\0')
@@ -110,7 +111,7 @@ char	*ft_save(char *save)
 		free(save);
 		return (NULL);
 	}
-	buff = malloc ((sizeof(char)) * ft_strlen(save) - i + 1);
+	buff = malloc ((sizeof(char)) * gnlft_strlen(save) - i + 1);
 	if (!buff)
 		return (NULL);
 	i++;
