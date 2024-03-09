@@ -6,7 +6,7 @@
 #    By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 16:34:18 by tabadawi          #+#    #+#              #
-#    Updated: 2024/03/09 18:19:33 by tabadawi         ###   ########.fr        #
+#    Updated: 2024/03/09 20:39:19 by tabadawi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ BONUS = checker
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 
 SRC	=	utils/ft_atoi.c \
 		utils/ft_split.c \
@@ -72,8 +72,6 @@ BONUS_SRC =		utils/ft_atoi.c \
 OBJS =	$(SRC:.c=.o)
 
 BONUS_OBJS =	$(BONUS_SRC:.c=.o)
-
-CFLAGS	= -Wall -Werror -Wextra -fsanitize=address -g3
 
 all: $(NAME)
 

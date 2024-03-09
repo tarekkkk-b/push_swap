@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:15:55 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/09 17:06:26 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:34:40 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	stackissorted(t_list **stack)
 	if (!stack || !(*stack))
 		return (0);
 	iter = (*stack);
-	while ((iter)->next)
+	while (iter->next)
 	{
 		if (iter->content < iter->next->content)
 			iter = iter->next;
