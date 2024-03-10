@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:12:26 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/10 19:34:59 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/10 22:38:18 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ char	*gnlft_strjoin(char *sv, char *buff)
 	i = 0;
 	if (!sv && !buff)
 		return (NULL);
-	newsave = malloc(sizeof(char) * ((gnlft_strlen(sv) + gnlft_strlen(buff)) + 1));
+	newsave = malloc(sizeof(char) * ((gnlft_strlen(sv)
+					+ gnlft_strlen(buff)) + 1));
 	if (!newsave)
 		return (NULL);
 	while (sv && sv[i] != '\0')
