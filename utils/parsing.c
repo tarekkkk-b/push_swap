@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:54 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/09 17:04:35 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/10 16:18:37 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	*parser(char **sp_inp, int numbercount, int *list_size)
 			if (dupcheck(intarr, sp_inp, i) == 1)
 				return (freeing(sp_inp), NULL);
 			else
-				(*list_size)++;
+				*list_size += 1;
 		}
 		else
 			return (freeing(sp_inp), NULL);

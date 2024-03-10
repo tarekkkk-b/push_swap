@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:52:31 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/09 19:59:57 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/10 16:45:59 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	do_swap(char *move, t_list **stack_a, t_list **stack_b)
 {
 	if (ft_strcmp(move, "sa\n") == 0)
 		sa(stack_a, 0);
-	if(ft_strcmp(move, "sb\n") == 0)
+	if (ft_strcmp(move, "sb\n") == 0)
 		sb(stack_b, 0);
 	if (ft_strcmp(move, "ss\n") == 0)
 		ss(stack_a, stack_b, 0);
@@ -54,7 +54,7 @@ void	do_revrot(char *move, t_list **stack_a, t_list **stack_b)
 {
 	if (ft_strcmp(move, "rra\n") == 0)
 		rra(stack_a, 0);
-	if(ft_strcmp(move, "rrb\n") == 0)
+	if (ft_strcmp(move, "rrb\n") == 0)
 		rrb(stack_b, 0);
 	if (ft_strcmp(move, "rrr\n") == 0)
 		rrr(stack_a, stack_b, 0);

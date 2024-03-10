@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:25:30 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/09 21:58:52 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/10 18:29:55 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,20 @@ int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int		lstsze;
+	int		listsize;
+	int		*intarr;
 
-	lstsze = 0;
+	listsize = 0;
 	if (ac < 2)
 		exit (0);
 	stack_a = NULL;
-	stack_a = stackmaker(input_handling(av, ac - 1, &lstsze), lstsze, stack_a);
+	intarr = input_handling(av, ac - 1, &listsize);
+	stack_a = stackmaker(intarr, listsize, stack_a);
 	stack_b = NULL;
 	read_moves(&stack_a, &stack_b);
 	if (stackissorted(&stack_a) == 0 && ft_lstsize(stack_b) == 0)
 		write (1, "OK\n", 3);
-	else if (stackissorted(&stack_a) != 0 || ft_lstsize(stack_b) != 0)
+	else if (stackissorted(&stack_a) == 1 || ft_lstsize(stack_b) != 0)
 		write (1, "KO\n", 3);
 	ft_lstclear(&stack_a, free);
 	if (stack_b)

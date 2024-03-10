@@ -5,28 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 16:12:38 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/09 17:16:41 by tabadawi         ###   ########.fr       */
+/*   Created: 2023/12/09 09:22:39 by ebinjama          #+#    #+#             */
+/*   Updated: 2024/03/10 18:27:46 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <limits.h>
-# include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdbool.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_readfile(char *save, int fd);
-int		gnlft_strlen(const char *str);
-char	*ft_strchr(char *s, int c);
-char	*gnlft_strjoin(char *s1, char *s2);
-char	*ft_get_line(char *save);
-char	*ft_save(char *save);
+char	*gnl_strjoin(const char *s1, const char *s2);
+char	*ft_strchr(const char *str, int c);
+char	*gnl_strdup(const char *str);
+char	*ft_strncpy(char *dst, const char *src, size_t n);
+size_t	gnl_strlen(const char *str);
 
 #endif

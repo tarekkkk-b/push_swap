@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:09:24 by tabadawi          #+#    #+#             */
-/*   Updated: 2024/03/09 17:05:14 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/10 17:04:34 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ void	ss(t_list **stack_a, t_list **stack_b, int flag)
 	if (stack_b && (*stack_b))
 		swap(stack_b);
 	if (flag == 1)
-		write (1, "ss\n", 4);
+		write (1, "ss\n", 3);
 }
