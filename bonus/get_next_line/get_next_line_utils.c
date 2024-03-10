@@ -5,85 +5,119 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/09 09:22:18 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/03/10 18:25:14 by tabadawi         ###   ########.fr       */
+/*   Created: 2023/12/29 16:12:26 by tabadawi          #+#    #+#             */
+/*   Updated: 2024/03/10 19:34:59 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	gnl_strlen(const char *initial)
+int	gnlft_strlen(const char *str)
 {
-	const char	*final;
+	int	i;
 
-	if (!initial)
-		return (0);
-	final = initial;
-	while (*final)
-		++final;
-	return (final - initial);
-}
-
-char	*ft_strchr(const char *haystack, int needle)
-{
-	if (!haystack)
-		return (NULL);
-	while (*haystack)
-	{
-		if (*haystack == needle)
-			return ((char *)haystack);
-		++haystack;
-	}
-	return (NULL);
-}
-
-char	*gnl_strjoin(const char *s1, const char *s2)
-{
-	char	*self;
-	char	*dummy;
-
-	if (!s1 && !s2)
-		return (NULL);
-	self = malloc(sizeof(char) * (gnl_strlen(s1) + gnl_strlen(s2) + 1));
-	if (!self)
-		return (NULL);
-	dummy = self;
-	if (s1)
-		while (*s1)
-			*dummy++ = *s1++;
-	if (s2)
-		while (*s2)
-			*dummy++ = *s2++;
-	*dummy = 0;
-	return (self);
-}
-
-char	*gnl_strdup(const char *str)
-{
-	char	*self;
-	char	*dummy;
-
+	i = 0;
 	if (!str)
-		return (NULL);
-	self = malloc(sizeof(char) * (gnl_strlen(str) + 1));
-	if (!self)
-		return (NULL);
-	dummy = self;
-	while (*str)
-		*dummy++ = *str++;
-	*dummy = 0;
-	return (self);
+		return (0);
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
 
-char	*ft_strncpy(char *dst, const char *src, size_t n)
+char	*ft_strchr(char *save, int c)
 {
-	if (!dst || !src)
+	int		i;
+
+	i = 0;
+	if (!save)
+		return (0);
+	if ((char)c == '\0')
+		return (&save[gnlft_strlen(save)]);
+	while (save[i] != '\0')
+	{
+		if (save[i] == (char)c)
+			return (&save[i]);
+		i++;
+	}
+	return (0);
+}
+
+char	*gnlft_strjoin(char *sv, char *buff)
+{
+	char	*newsave;
+	int		i;
+	int		j;
+
+	j = 0;
+	i = 0;
+	if (!sv && !buff)
 		return (NULL);
-	while (*src && n--)
-		*dst++ = *src++;
-	if (n)
-		while (n--)
-			*dst++ = 0;
-	*dst = 0;
-	return (dst);
+	newsave = malloc(sizeof(char) * ((gnlft_strlen(sv) + gnlft_strlen(buff)) + 1));
+	if (!newsave)
+		return (NULL);
+	while (sv && sv[i] != '\0')
+	{
+		newsave[i] = sv[i];
+		i++;
+	}
+	while (buff[j] != '\0')
+		newsave[i++] = buff[j++];
+	newsave[i++] = '\0';
+	if (sv)
+		free(sv);
+	return (newsave);
+}
+
+char	*ft_get_line(char *save)
+{
+	int		i;
+	char	*print;
+
+	i = 0;
+	if (!save[i])
+		return (NULL);
+	while (save[i] && save[i] != '\n')
+		i++;
+	print = malloc((sizeof(char)) * (i + 1 + (save[i] == '\n')));
+	if (!print)
+		return (NULL);
+	i = 0;
+	while (save[i] != '\n' && save[i] != '\0')
+	{
+		print[i] = save[i];
+		i++;
+	}
+	if (save[i] == '\n')
+	{
+		print[i] = '\n';
+		i++;
+	}
+	print[i] = '\0';
+	return (print);
+}
+
+char	*ft_save(char *save)
+{
+	int		i;
+	int		j;
+	char	*buff;
+
+	i = 0;
+	while (save[i] && save[i] != '\n')
+		i++;
+	if (!save[i] || (save[i] && !save[i + 1]))
+	{
+		free(save);
+		return (NULL);
+	}
+	buff = malloc ((sizeof(char)) * gnlft_strlen(save) - i + 1);
+	if (!buff)
+		return (NULL);
+	i++;
+	j = 0;
+	while (save[i])
+		buff[j++] = save[i++];
+	buff[j] = '\0';
+	free(save);
+	return (buff);
 }
