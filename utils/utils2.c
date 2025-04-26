@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:44 by tabadawi          #+#    #+#             */
-/*   Updated: 2025/01/13 14:07:37 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:04:44 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,23 @@ char	*join_args(char *input, char **av, int ac)
 {
 	int	i;
 
-	if (!av[1] || !av[1][0])
-		exiting(NULL, NULL);
-	i = 0;
-	while (++i <= ac)
-		if (ft_isspace(av[i]))
-			exiting(NULL, NULL);
-	input = ft_strdup(av[1]);
 	i = 1;
-	while (++i <= ac)
+	if (av[i][0] == 0 || av[i] == NULL)
+		exiting(NULL, NULL);
+	while (i <= ac)
 	{
-		if (!av[i] || !av[i][0])
+		if (ft_isspace(av[i]) == 1)
+			exiting(NULL, NULL);
+		i++;
+	}
+	i = 1;
+	input = ft_strdup(av[i++]);
+	while (i <= ac)
+	{
+		if (av[i][0] == 0 || av[i] == NULL)
 			exiting(input, NULL);
 		input = ft_strjoin(input, av[i]);
+		i++;
 	}
 	return (input);
 }

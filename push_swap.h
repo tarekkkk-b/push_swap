@@ -6,7 +6,7 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:25:03 by tabadawi          #+#    #+#             */
-/*   Updated: 2025/01/13 14:33:02 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/10 16:36:49 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ typedef struct s_split
 
 typedef struct s_input
 {
+	int		i;
 	int		numbercount;
 	char	*input;
-	char	**sp_inp;
 	int		*intarr;
+	char	**sp_inp;
 }	t_input;
 
 typedef struct s_list

@@ -6,28 +6,25 @@
 /*   By: tabadawi <tabadawi@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:24:42 by tabadawi          #+#    #+#             */
-/*   Updated: 2025/01/13 14:35:09 by tabadawi         ###   ########.fr       */
+/*   Updated: 2024/03/10 16:46:27 by tabadawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init(t_input *var, int ac, char **av)
-{
-	var->input = join_args(var->input, av, ac);
-	var->numbercount = inputcount(var->input, ' ');
-	var->sp_inp = ft_split(var->input, ' ');
-	free (var->input);
-	if (!var->sp_inp)
-		exiting(NULL, NULL);
-}
-
 int	*input_handling(char **av, int ac, int *list_size)
 {
 	t_input	var;
 
-	init(&var, ac, av);
-	if (!var.sp_inp[0])
+	var.input = NULL;
+	var.input = join_args(var.input, av, ac);
+	var.numbercount = inputcount(var.input, ' ');
+	var.sp_inp = ft_split(var.input, ' ');
+	if (!var.sp_inp)
+		exiting(var.input, NULL);
+	var.i = 0;
+	free (var.input);
+	if (!var.sp_inp || var.sp_inp[var.i] == 0 || var.sp_inp[var.i] == NULL)
 		exiting(NULL, var.sp_inp);
 	var.intarr = parser(var.sp_inp, var.numbercount, list_size);
 	if (!var.intarr)
